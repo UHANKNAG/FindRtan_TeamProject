@@ -28,6 +28,8 @@ public class LJMGameManager : MonoBehaviour
 
     int combo = 0; //    ÄÞº¸
 
+    Vector3 comboOriginPos;
+
     private void Awake()
     {
         if (instance == null) instance = this;
@@ -54,7 +56,11 @@ public class LJMGameManager : MonoBehaviour
         score = 0;
         comboTxt.text = ($"{combo} Combo");
 
+        comboOriginPos = comboTxt.rectTransform.localPosition;
+
         comboTxt.gameObject.SetActive(false);
+
+        
     }
 
     void Update()
@@ -148,10 +154,11 @@ public class LJMGameManager : MonoBehaviour
     {
         anim.SetTrigger("DoneCombo");
         combo = 0;
-        comboTxt.text = ($"{combo.ToString()} Combo");
+        comboTxt.text = ($"{combo} Combo");
         UpdateComboColor();
-        Invoke("DisableComboTxt", 1f);
-        
+
+        Invoke("RecoverComboTxt", 1f);
+
     }
 
     void UpdateComboColor()
@@ -169,8 +176,9 @@ public class LJMGameManager : MonoBehaviour
         comboTxt.color = targetColor;
     }
 
-    void DisableComboTxt()
+    void RecoverComboTxt()
     {
+        comboTxt.rectTransform.localPosition = comboOriginPos;
         comboTxt.gameObject.SetActive(false);
     }
 }
