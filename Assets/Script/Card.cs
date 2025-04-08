@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
+using DG.Tweening; // DOTween 라이브러리 필요
 
 
 
@@ -14,6 +15,8 @@ public class Card : MonoBehaviour
 
     public int idx = 0;
     public int count = 0;
+
+    private bool isFlipped = false;
 
     public Text countTxt;
     public GameObject front;
@@ -79,8 +82,8 @@ public class Card : MonoBehaviour
         anim.SetBool("isOpen", true);
         front.SetActive(true);
         back.SetActive(false);
-        
-        if(GameManager.instance.firstCard == null)
+
+        if (GameManager.instance.firstCard == null)
         {
             GameManager.instance.firstCard = this;
         }
@@ -90,6 +93,14 @@ public class Card : MonoBehaviour
             GameManager.instance.Matched();
         }
     }
+
+    public void FlipCard()
+    {
+        float targetRotationX = isFlipped ? 0f : 180f;
+        transform.DORotate(new Vector3(targetRotationX, 0f, 0f), 0.5f); // 부드러운 회전 (0.5초)
+        isFlipped = !isFlipped; // 상태 변경
+    }
+
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1f);
