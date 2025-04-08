@@ -7,122 +7,121 @@ public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public Card firstCard; //    Ã¹¹øÂ° Ä«µå
-    public Card secondCard; //    µÎ¹øÂ° Ä«µå
+    public Card firstCard;  // ì²« ë²ˆì§¸ ë’¤ì§‘íŒ ì¹´ë“œ
+    public Card secondCard; // ë‘ ë²ˆì§¸ ë’¤ì§‘íŒ ì¹´ë“œ
 
-    public Text timeTxt; //    ½Ã°£ ÅØ½ºÆ®
-    public Text countTxt; //    ³²Àº ¼±ÅÃ È½¼ö ÅØ½ºÆ®
-    public GameObject endTxt; //    °ÔÀÓ¿À¹ö ÅØ½ºÆ®
+    public Text timeTxt;  // ì‹œê°„ í‘œì‹œìš© í…ìŠ¤íŠ¸
+    public Text countTxt; // ë’¤ì§‘ê¸° íšŸìˆ˜ í‘œì‹œìš© í…ìŠ¤íŠ¸
+    public GameObject endTxt; // ê²Œì„ ì¢…ë£Œ ì‹œ í‘œì‹œë  í…ìŠ¤íŠ¸(íŒ¨ë„)
 
-    public int count = 0;
-    public int cardCount = 0;
-    float floatTime = 0.0f;
+    public int count = 0;      // ë‚¨ì€ ë’¤ì§‘ê¸° íšŸìˆ˜
+    public int cardCount = 0;  // ë‚¨ì€ ì¹´ë“œ ìˆ˜
+    float floatTime = 0.0f;    // ê²½ê³¼ ì‹œê°„
 
     public bool isOver = false;
 
     AudioSource audioSource;
     public AudioClip clip;
 
+    // [ì¶”ê°€] ì´ë²¤íŠ¸ ì¹´ë“œ ë§¤ì¹­ ì‹œ í‘œì‹œí•  íŒ¨ë„
+    [Header("ì´ë²¤íŠ¸ ì¹´ë“œ UI")]
+    public GameObject eventPanel;
+
     private void Awake()
     {
+        // ì‹±ê¸€í„´ í• ë‹¹
         if(instance == null) instance = this;
-        //    ÀÎ½ºÅÏ½º ÇÒ´ç
-        
+
+        // ì˜¤ë””ì˜¤ ì†ŒìŠ¤ ê°€ì ¸ì˜¤ê¸°
         audioSource = GetComponent<AudioSource>();
-        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
     }
 
     void Start()
     {
-        count = 20;
-        //    ÀüÃ¼ Ä«µåÀÇ °¹¼ö
-
+        count = 20; // ì²˜ìŒ ì£¼ì–´ì§€ëŠ” ë’¤ì§‘ê¸° ê°€ëŠ¥ íšŸìˆ˜
         countTxt.text = count.ToString();
-        //    ³²Àº È½¼ö Ä«¿îÆ® 
 
         Time.timeScale = 1.0f;
-        //    ½Ã°£ ¼³Á¤
-        //    0 - ¾ÆÀÌ¿¡ ¸ØÃã
-        //    0.5 - ½Ã°£ÀÌ Àı¹İÁ¤µµ ´À¸®°Ô Èê·¯°¨
-        //    1 - ½Ã°£ÀÌ µ¿ÀÏÇÏ°Ô Èê·¯°¨
-
-
-        //    ÃÊ±âÈ­ ¸ñ·Ï
         endTxt.SetActive(false);
         isOver = false;
+
+        // [ì¶”ê°€] ì´ë²¤íŠ¸ íŒ¨ë„ì´ ì¡´ì¬í•œë‹¤ë©´ ì´ˆê¸°ì—ëŠ” ë¹„í™œì„±í™”
+        if (eventPanel != null)
+        {
+            eventPanel.SetActive(false);
+        }
     }
 
     void Update()
     {
-        //    Å×½ºÆ®¸¦ À§ÇØ ½Ã°£ ºñÈ°¼ºÈ­
-        //floatTime += Time.deltaTime;
-
+        // (ì˜ˆì‹œ) í…ŒìŠ¤íŠ¸ìš© ì½”ë“œ: ì‹œê°„ ì¸¡ì •
+        // floatTime += Time.deltaTime;
 
         if(floatTime >= 30f)
-        //    ¸¸¾à Á¦ÇÑ ½Ã°£ÀÌ ³¡³­´Ù¸é
         {
+            // 30ì´ˆê°€ ë„˜ìœ¼ë©´ ê²Œì„ ì˜¤ë²„ ì²˜ë¦¬
             Time.timeScale = 0f;
-            //    ¸¸¾à »õ·Î¿î ¹®±¸¸¦ ³Ö¾î¼­ ¸¸µé°í ½Í´Ù¸é
-            //    À¯´ÏÆ¼¿¡¼­ ½Ã°£ÃÊ°ú ÅØ½ºÆ®¸¦ ¸¸µé°í °¡Á®¿Â µÚ
-            //    ¾Æ·¡¿¡ endTxt°¡ ¾Æ´Ñ gameoverTxt¸¦ µû·Î ¸¸µé¾î¼­
-            //    ¸¸µé¸é ½Ã°£ ÃÊ°ú·Î °ÔÀÓ¿À¹öÇßÀ½À» ¾Ë¸± ¼ö ÀÖ´Ù.
             endTxt.SetActive(true);
-
-            //    °ÔÀÓ Á¾·á ÈÄ Ä«µå ¼±ÅÃÀ» ¹æÁöÇÏ±â À§ÇÑ Á¶Ä¡
-            isOver=true;
+            isOver = true;
         }
-        timeTxt.text = floatTime.ToString("N2");
-        //    ¼Ò¼ıÁ¡ÀÇ 2ÀÚ¸®±îÁö¸¸ ¶ç¿ì±â
+
+        timeTxt.text = floatTime.ToString("N2"); // ì†Œìˆ˜ì  ë‘˜ì§¸ ìë¦¬ê¹Œì§€ í‘œì‹œ
     }
 
+    /// <summary>
+    /// ë‘ ì¥ì˜ ì¹´ë“œê°€ ë’¤ì§‘í˜”ì„ ë•Œ í˜¸ì¶œ (ë§¤ì¹­ íŒì •)
+    /// </summary>
     public void Matched()
     {
+        // idxê°€ ê°™ë‹¤ë©´ -> ë§¤ì¹­ ì„±ê³µ
         if(firstCard.idx == secondCard.idx)
-        //    Ã¹¹øÂ°¿¡ °í¸¥ Ä«µå¿Í µÎ¹øÂ°¿¡ °í¸¥ Ä«µå°¡ ÀÏÄ¡ÇÑ´Ù¸é
         {
-
             audioSource.PlayOneShot(clip);
-            //    Á¤´ä »ç¿îµå ÆÄÀÏ Àç»ı
 
+            // ë‘ ì¹´ë“œ ì œê±°
             firstCard.DestroyCard();
             secondCard.DestroyCard();
-            //    ¸ÂÃá Ä«µå »èÁ¦
 
-            cardCount -= 2;
-            //    ³²Àº Ä«µåÀÇ ¼ö °¨¼Ò
+            cardCount -= 2; // ì „ì²´ ì¹´ë“œ ìˆ˜ ê°ì†Œ
 
+            // Heal ì¹´ë“œì¼ ê²½ìš°(ì˜ˆ: idx==3)
             if (firstCard.type == Card.CardType.Heal)
             {
-                //    ¸¸¾à ÃÖ´ë ½Ã°£À» ¿Ã¸°´Ù¸é ÃÖ´ë ½Ã°£µµ º¯¼öÈ­ ½ÃÅ²´Ù
-                //    ±×¸®°í ¸¸¾à ÈÜ¼ö¶ó¸é ¾î¶»°Ô ÇØ¾ßÇÒÁö »ı°¢Á» ÇØ¾ßÁö
+                // (ì˜ˆì‹œ) ì‹œê°„ ì¦ê°€/íšŒë³µ ë“± ì›í•˜ëŠ” ë¡œì§ ì¶”ê°€ ê°€ëŠ¥
             }
+            // Joker ì¹´ë“œì¼ ê²½ìš°(ì˜ˆ: idx==4)
             if (firstCard.type == Card.CardType.Joker)
             {
-                Debug.Log("Á¶Ä¿Ä«µåÀÇ Â¦ÀÌ ¸ÂÃçÁ³½À´Ï´Ù!");
-                //    Á¶Ä¿Ä«µåÀÏ °æ¿ì
+                Debug.Log("ì¡°ì»¤ì¹´ë“œ ë§¤ì¹­! íŠ¹ë³„ íš¨ê³¼ ë°œë™!");
             }
 
+            // [ì¶”ê°€] ì´ë²¤íŠ¸ ì¹´ë“œì¸ì§€ í™•ì¸
+            if (firstCard.isEventCard && secondCard.isEventCard)
+            {
+                Debug.Log("ì´ë²¤íŠ¸ ì¹´ë“œ ë§¤ì¹­ ì„±ê³µ!");
+                ShowEventPanel();
+            }
 
+            // ëª¨ë“  ì¹´ë“œê°€ ì‚¬ë¼ì¡Œìœ¼ë©´ ê²Œì„ ì¢…ë£Œ
             if (cardCount == 0)
-            //    ¸¸¾à ¸ğµç Ä«µå¸¦ ¸ÂÃè´Ù¸é
             {
                 Invoke("GameOver", 1f);
             }
         }
         else
         {
+            // ë§¤ì¹­ ì‹¤íŒ¨: ë‘ ì¹´ë“œì˜ ë’¤ì§‘ê¸° íšŸìˆ˜ ì°¨ê°
             firstCard.count--;
             secondCard.count--;
-            //    ¼±ÅÃÇÑ µÎ Ä«µåÀÇ ³²Àº ¼±ÅÃ È½¼ö °¨¼Ò
 
+            // ë‹¤ì‹œ ë’·ë©´ìœ¼ë¡œ
             firstCard.CloseCard();
             secondCard.CloseCard();
-            //    Ä«µå ´Ù½Ã µ¤±â
         }
 
+        // ë‹¤ìŒ ë¹„êµë¥¼ ìœ„í•´ ë‘ ì¹´ë“œ ì •ë³´ ì´ˆê¸°í™”
         firstCard = null;
         secondCard = null;
-        //    ¼±ÅÃµÈ Ä«µå ÇØÁ¦ÇÏ±â
     }
 
     void GameOver()
@@ -130,5 +129,23 @@ public class GameManager : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+    }
+
+    // [ì¶”ê°€] ì´ë²¤íŠ¸ íŒ¨ë„ í‘œì‹œ
+    public void ShowEventPanel()
+    {
+        if (eventPanel != null)
+        {
+            eventPanel.SetActive(true);
+        }
+    }
+
+    // [ì„ íƒ] ì¼ì • ì‹œê°„ í›„ ìˆ¨ê¸°ëŠ” ê¸°ëŠ¥ì´ í•„ìš”í•˜ë‹¤ë©´ ì¶”ê°€
+    public void HideEventPanel()
+    {
+        if (eventPanel != null)
+        {
+            eventPanel.SetActive(false);
+        }
     }
 }
