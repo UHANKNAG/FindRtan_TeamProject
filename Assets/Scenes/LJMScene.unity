@@ -509,6 +509,7 @@ MonoBehaviour:
   cardCount: 0
   isOver: 0
   clip: {fileID: 8300000, guid: 615554c9f15407c40ac43bd03d73cffe, type: 3}
+  oofClip: {fileID: 8300000, guid: d1b25402035aea5478524eff9451d2ef, type: 3}
 --- !u!1 &1045194402
 GameObject:
   m_ObjectHideFlags: 0
