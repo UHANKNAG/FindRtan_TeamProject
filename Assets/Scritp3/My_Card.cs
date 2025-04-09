@@ -32,26 +32,24 @@ public class My_Card : MonoBehaviour
 
         //    초기화 목록
         btn.enabled = true;
+        if (btn != null)
+        {
+            btn.onClick.AddListener(OpenCard);
+        }
     }
 
 
     void Update()
     {
         //    만약 게임 오버상태라면 뒤집기 기능 비활성화 하기
-        if (My_GameManager.instance.isOver) btn.enabled = false;
-
-        if (count <= 0)
-        //    만약 카운트가 0이라면
-        {
-            count = 0;
-            back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
-        }
+        if (My_GameManager.instance.isOver) 
+            btn.enabled = false;
     }
 
     public void Setting(int num)
     {
         idx = num;
-        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"Sprite/team{idx}");
     }
 
     public void OpenCard()

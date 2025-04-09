@@ -61,10 +61,8 @@ public class My_GameManager : MonoBehaviour
 
         currentIndex = 0;
 
-        correctOrder = new List<int> { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
-        
-        // Linq를 사용한 셔플 (OrderBy + Random)
-        correctOrder = correctOrder.OrderBy(x => Random.Range(0f, 1f)).ToList();
+        // 중복 없이 카드 인덱스 0~9 한 번씩만 포함하고, 순서 섞기
+        correctOrder = Enumerable.Range(0, 10).OrderBy(x => Random.Range(0f, 1f)).ToList();
 
         UpdateOrderText();
         UpdateOrderVisual();
@@ -167,7 +165,7 @@ public class My_GameManager : MonoBehaviour
         if (currentIndex <  correctOrder.Count)
         {
             int nextIdx = correctOrder[currentIndex];
-            Sprite sprite = Resources.Load<Sprite>($"rtan{nextIdx}");
+            Sprite sprite = Resources.Load<Sprite>($"Sprite/team{nextIdx}");   
             
             if (targetCardImage != null && sprite != null)
             {

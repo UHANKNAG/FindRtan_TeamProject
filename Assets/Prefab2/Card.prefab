@@ -356,7 +356,7 @@ MonoBehaviour:
   anim: {fileID: 7262290316354276758}
   frontImage: {fileID: 4704919015791188628}
   btn: {fileID: 0}
-  clip: {fileID: 0}
+  clip: {fileID: 8300000, guid: 00ce04b407a7c6240829b109f26a1832, type: 3}
 --- !u!1 &6631953392145546977
 GameObject:
   m_ObjectHideFlags: 0
