@@ -7,7 +7,7 @@ public class My_Retry : MonoBehaviour
 {
     public void RetryBtn()
     {
-        SceneManager.LoadScene("MainScene1");
+        SceneManager.LoadScene("LSY_Scene");
     }
 
     public void MyRetryBtn()
