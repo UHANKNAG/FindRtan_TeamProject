@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // DOTween ¶óÀÌºê·¯¸® ÇÊ¿ä
+using DG.Tweening; // DOTween ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½ ï¿½Ê¿ï¿½
 
 
 
@@ -33,14 +33,14 @@ public class Card : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         btn.enabled = true;
     }
 
 
     void Update()
     {
-        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
         if (GameManager.instance.isOver) btn.enabled = false;
     }
 
@@ -52,7 +52,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (LJMGameManager.instance.secondCard != null) return;
+        if (GameManager.instance.secondCard != null) return;
 
         audioSource.PlayOneShot(clip);
 
