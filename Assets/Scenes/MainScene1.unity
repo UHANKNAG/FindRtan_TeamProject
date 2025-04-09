@@ -163,7 +163,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: db43ea8168f3b0542acbec2bbf56fd79, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 5318219072060125965, guid: 16f6126b892ce86419cfe1745c6122a8, type: 3}
+  card: {fileID: 5318219072060125965, guid: f8f0e0fb2cb8c35439e54c6988d178c0, type: 3}
 --- !u!1 &375286495
 GameObject:
   m_ObjectHideFlags: 0
@@ -480,16 +480,16 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   timeTxt: {fileID: 1045194403}
-  countTxt: {fileID: 375286498}
-  orderTxt: {fileID: 1783558939}
+  countTxt: {fileID: 0}
+  orderTxt: {fileID: 0}
   endTxt: {fileID: 1870907778}
-  targetCardImage: {fileID: 888076338}
+  targetCardImage: {fileID: 0}
   count: 0
   cardCount: 0
   isOver: 0
   correctOrder: 
   currentIndex: 0
-  matchClip: {fileID: 8300000, guid: 615554c9f15407c40ac43bd03d73cffe, type: 3}
+  matchClip: {fileID: 0}
 --- !u!1 &888076337
 GameObject:
   m_ObjectHideFlags: 0
