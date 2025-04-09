@@ -61,7 +61,7 @@ public class Cardj : MonoBehaviour
         }
 
         // 남은 뒤집기 횟수를 UI에 표시
-        countTxt.text = count.ToString();
+        //  countTxt.text = count.ToString();
     }
 
     /// <summary>

@@ -160,10 +160,10 @@ MonoBehaviour:
   m_GameObject: {fileID: 202042501}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: db43ea8168f3b0542acbec2bbf56fd79, type: 3}
+  m_Script: {fileID: 11500000, guid: 8e2bf28b34f49244a8fd0059fecdec00, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  card: {fileID: 2697256063465356631, guid: 63e46e3106c82354580b2834e00ae4d9, type: 3}
+  card: {fileID: 2697256063465356631, guid: 82b5f23ffeb7bd04a8880cc51694de6c, type: 3}
 --- !u!1 &291839927
 GameObject:
   m_ObjectHideFlags: 0
@@ -420,8 +420,8 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 766498065}
-  - component: {fileID: 766498064}
   - component: {fileID: 766498066}
+  - component: {fileID: 766498067}
   m_Layer: 0
   m_Name: GameManager
   m_TagString: Untagged
@@ -429,28 +429,6 @@ GameObject:
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
---- !u!114 &766498064
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 766498063}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 623156cf38c019e4caf881bb6032150d, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  firstCard: {fileID: 0}
-  secondCard: {fileID: 0}
-  timeTxt: {fileID: 1045194403}
-  countTxt: {fileID: 375286498}
-  endTxt: {fileID: 1870907778}
-  count: 20
-  cardCount: 0
-  isOver: 0
-  clip: {fileID: 8300000, guid: 615554c9f15407c40ac43bd03d73cffe, type: 3}
-  eventPanel: {fileID: 291839927}
 --- !u!4 &766498065
 Transform:
   m_ObjectHideFlags: 0
@@ -563,6 +541,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &766498067
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 766498063}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1cbc84a1bf28cb848b878d5d631931bd, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  firstCard: {fileID: 0}
+  secondCard: {fileID: 0}
+  timeTxt: {fileID: 1045194403}
+  countTxt: {fileID: 375286498}
+  endTxt: {fileID: 1870907778}
+  count: 0
+  cardCount: 0
+  isOver: 0
+  clip: {fileID: 8300000, guid: 615554c9f15407c40ac43bd03d73cffe, type: 3}
+  eventPanel: {fileID: 291839927}
 --- !u!1 &835512171
 GameObject:
   m_ObjectHideFlags: 0

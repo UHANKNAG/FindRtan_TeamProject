@@ -441,7 +441,7 @@ GameObject:
   - component: {fileID: 6941203607867358252}
   - component: {fileID: 1767607331561096584}
   m_Layer: 0
-  m_Name: Card
+  m_Name: LSYCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
