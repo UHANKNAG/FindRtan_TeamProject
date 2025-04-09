@@ -14,4 +14,9 @@ public class Retry : MonoBehaviour
     {
         SceneManager.LoadScene("LJMScene");
     }
+
+    public void RetryBtn_Limited()
+    {
+        SceneManager.LoadScene("LimitedFlipScene");
+    }
 }

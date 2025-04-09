@@ -3,7 +3,6 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // DOTween ���̺귯�� �ʿ�
 
 
 
@@ -33,14 +32,14 @@ public class Card : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    �ʱ�ȭ ���
+
         btn.enabled = true;
     }
 
 
     void Update()
     {
-        //    ���� ���� �������¶�� ������ ��� ��Ȱ��ȭ �ϱ�
+
         if (GameManager.instance.isOver) btn.enabled = false;
     }
 
