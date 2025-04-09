@@ -10,8 +10,8 @@ public class GameManager : MonoBehaviour
     public Card firstCard;  // 첫 번째 뒤집힌 카드
     public Card secondCard; // 두 번째 뒤집힌 카드
 
-    public Text timeTxt;  // 시간 표시용 텍스트
-    public Text countTxt; // 뒤집기 횟수 표시용 텍스트
+    public Text timeTxt;    // 시간 표시용 텍스트
+    public Text countTxt;   // 뒤집기 횟수 표시용 텍스트
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
 
     public int count = 0;      // 남은 뒤집기 횟수
@@ -30,7 +30,7 @@ public class GameManager : MonoBehaviour
     private void Awake()
     {
         // 싱글턴 할당
-        if(instance == null) instance = this;
+        if (instance == null) instance = this;
 
         // 오디오 소스 가져오기
         audioSource = GetComponent<AudioSource>();
@@ -57,7 +57,7 @@ public class GameManager : MonoBehaviour
         // (예시) 테스트용 코드: 시간 측정
         // floatTime += Time.deltaTime;
 
-        if(floatTime >= 30f)
+        if (floatTime >= 30f)
         {
             // 30초가 넘으면 게임 오버 처리
             Time.timeScale = 0f;
@@ -74,7 +74,7 @@ public class GameManager : MonoBehaviour
     public void Matched()
     {
         // idx가 같다면 -> 매칭 성공
-        if(firstCard.idx == secondCard.idx)
+        if (firstCard.idx == secondCard.idx)
         {
             audioSource.PlayOneShot(clip);
 
@@ -82,24 +82,30 @@ public class GameManager : MonoBehaviour
             firstCard.DestroyCard();
             secondCard.DestroyCard();
 
-            cardCount -= 2; // 전체 카드 수 감소
+            // 남아 있는 전체 카드 수 감소
+            cardCount -= 2;
 
             // Heal 카드일 경우(예: idx==3)
             if (firstCard.type == Card.CardType.Heal)
             {
                 // (예시) 시간 증가/회복 등 원하는 로직 추가 가능
             }
+
             // Joker 카드일 경우(예: idx==4)
             if (firstCard.type == Card.CardType.Joker)
             {
                 Debug.Log("조커카드 매칭! 특별 효과 발동!");
             }
 
-            // [추가] 이벤트 카드인지 확인
-            if (firstCard.isEventCard && secondCard.isEventCard)
+            // [추가] 이벤트 카드인지 확인 - 
+            //       "마지막에 이벤트 패널이 뜨지 않도록" cardCount가 남아있을 때만 표시
+            if (cardCount > 0)
             {
-                Debug.Log("이벤트 카드 매칭 성공!");
-                ShowEventPanel();
+                if (firstCard.isEventCard && secondCard.isEventCard)
+                {
+                    Debug.Log("이벤트 카드 매칭 성공!");
+                    ShowEventPanel();
+                }
             }
 
             // 모든 카드가 사라졌으면 게임 종료
@@ -129,6 +135,12 @@ public class GameManager : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+
+        // 혹시 모를 패널 잔여 표시를 방지하기 위해 이벤트 패널 확실히 비활성화
+        if (eventPanel != null)
+        {
+            eventPanel.SetActive(false);
+        }
     }
 
     // [추가] 이벤트 패널 표시
