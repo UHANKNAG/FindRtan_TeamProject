@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManager1 : MonoBehaviour
@@ -23,13 +24,20 @@ public class GameManager1 : MonoBehaviour
     AudioSource audioSource;
     public AudioClip clip;
 
+    // HK 선언
+    bool victoryGame = false;
+    int nextSceneLoad;
+
+
     private void Awake()
     {
         if(instance == null) instance = this;
         //    �ν��Ͻ� �Ҵ�
         
-        audioSource = GetComponent<AudioSource>();
+        // audioSource = GetComponent<AudioSource>();
         //    ������Ʈ �ҷ�����
+
+        Time.timeScale = 1.0f;
     }
 
     void Start()
@@ -40,7 +48,7 @@ public class GameManager1 : MonoBehaviour
         countTxt.text = count.ToString();
         //    ���� Ƚ�� ī��Ʈ 
 
-        Time.timeScale = 1.0f;
+        
         //    �ð� ����
         //    0 - ���̿� ����
         //    0.5 - �ð��� �������� ������ �귯��
@@ -81,7 +89,7 @@ public class GameManager1 : MonoBehaviour
         //    ù��°�� ���� ī��� �ι�°�� ���� ī�尡 ��ġ�Ѵٸ�
         {
 
-            audioSource.PlayOneShot(clip);
+            // audioSource.PlayOneShot(clip);
             //    ���� ���� ���� ���
 
             firstCard.DestroyCard();
@@ -91,16 +99,16 @@ public class GameManager1 : MonoBehaviour
             cardCount -= 2;
             //    ���� ī���� �� ����
 
-            if (firstCard.type == Card1.CardType.Heal)
-            {
-                //    ���� �ִ� �ð��� �ø��ٸ� �ִ� �ð��� ����ȭ ��Ų��
-                //    �׸��� ���� �ܼ���� ��� �ؾ����� ������ �ؾ���
-            }
-            if (firstCard.type == Card1.CardType.Joker)
-            {
-                Debug.Log("��Ŀī���� ¦�� ���������ϴ�!");
-                //    ��Ŀī���� ���
-            }
+            // if (firstCard.type == Card1.CardType.Heal)
+            // {
+            //     //    ���� �ִ� �ð��� �ø��ٸ� �ִ� �ð��� ����ȭ ��Ų��
+            //     //    �׸��� ���� �ܼ���� ��� �ؾ����� ������ �ؾ���
+            // }
+            // if (firstCard.type == Card1.CardType.Joker)
+            // {
+            //     Debug.Log("��Ŀī���� ¦�� ���������ϴ�!");
+            //     //    ��Ŀī���� ���
+            // }
 
 
             if (cardCount == 0)
@@ -111,8 +119,8 @@ public class GameManager1 : MonoBehaviour
         }
         else
         {
-            firstCard.count--;
-            secondCard.count--;
+            // firstCard.count--;
+            // secondCard.count--;
             //    ������ �� ī���� ���� ���� Ƚ�� ����
 
             firstCard.CloseCard();
@@ -128,7 +136,21 @@ public class GameManager1 : MonoBehaviour
     void GameOver()
     {
         isOver = true;
-        Time.timeScale = 0f;
+        // Time.timeScale = 0f;
         endTxt.SetActive(true);
+        MoveToNextStage();
+    }
+
+    void MoveToNextStage() {
+        // 마지막 Scene 경우 게임 끝내기 추가할 것
+        
+        if (victoryGame) {
+            SceneManager.LoadScene(nextSceneLoad);
+
+            if (nextSceneLoad > PlayerPrefs.GetInt("StageAt")) {
+                PlayerPrefs.SetInt("StageAt", nextSceneLoad);
+            }
+        }
+        Debug.Log("Move to Next Stage");
     }
 }

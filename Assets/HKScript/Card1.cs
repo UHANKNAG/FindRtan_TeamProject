@@ -31,37 +31,37 @@ public class Card1 : MonoBehaviour
 
     void Start()
     {
-        //    Ư�� ������ ī�忡�� Ư���ɷ� ��ȣ �ο��ϱ�
-        if(idx == 3) type = CardType.Heal;
-        else if(idx == 4) type = CardType.Joker;
+        // //    Ư�� ������ ī�忡�� Ư���ɷ� ��ȣ �ο��ϱ�
+        // if(idx == 3) type = CardType.Heal;
+        // else if(idx == 4) type = CardType.Joker;
 
-        //    �ִ�� ������ �� �ִ� ��
-        count = 3;
+        // //    �ִ�� ������ �� �ִ� ��
+        // count = 3;
 
-        //    ������Ʈ �ҷ�����
-        audioSource = GetComponent<AudioSource>();
-        btn = GetComponentInChildren<Button>();
+        // //    ������Ʈ �ҷ�����
+        // audioSource = GetComponent<AudioSource>();
+        // btn = GetComponentInChildren<Button>();
 
-        //    �ʱ�ȭ ���
-        btn.enabled = true;
+        // //    �ʱ�ȭ ���
+        // btn.enabled = true;
     }
 
 
     void Update()
     {
-        //    ���� ���� �������¶�� ������ ��� ��Ȱ��ȭ �ϱ�
-        if (GameManager1.instance.isOver) btn.enabled = false;
+        // //    ���� ���� �������¶�� ������ ��� ��Ȱ��ȭ �ϱ�
+        // if (GameManager1.instance.isOver) btn.enabled = false;
 
-        if (count <= 0)
-        //    ���� ī��Ʈ�� 0�̶��
-        {
-            count = 0;
-            countTxt.color = Color.red;
-            back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
-        }
+        // if (count <= 0)
+        // //    ���� ī��Ʈ�� 0�̶��
+        // {
+        //     count = 0;
+        //     countTxt.color = Color.red;
+        //     back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
+        // }
 
-        //    ���� ī��Ʈ ����(�ǽð�����)
-        countTxt.text = count.ToString();
+        // //    ���� ī��Ʈ ����(�ǽð�����)
+        // countTxt.text = count.ToString();
     }
 
     public void Setting(int num)
@@ -74,7 +74,7 @@ public class Card1 : MonoBehaviour
     {
         if (GameManager1.instance.secondCard != null) return;
 
-        audioSource.PlayOneShot(clip);
+        // audioSource.PlayOneShot(clip);
 
         anim.SetBool("isOpen", true);
         front.SetActive(true);
