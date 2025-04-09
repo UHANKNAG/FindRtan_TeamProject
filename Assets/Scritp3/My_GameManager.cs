@@ -29,7 +29,7 @@ public class My_GameManager : MonoBehaviour
     public int currentIndex = 0; // 현재 순서
 
     AudioSource audioSource;
-    public AudioClip clip;
+    public AudioClip matchClip;
 
     private void Awake()
     {
@@ -71,7 +71,7 @@ public class My_GameManager : MonoBehaviour
     void Update()
     {
         //    테스트를 위해 시간 비활성화
-        //floatTime += Time.deltaTime;
+        // floatTime += Time.deltaTime;
 
 
         if(floatTime >= 30f)
@@ -99,7 +99,7 @@ public class My_GameManager : MonoBehaviour
             // 순서 제한 모드 체크
             if (firstCard.idx == correctOrder[currentIndex])
             {
-                audioSource.PlayOneShot(clip);
+                audioSource.PlayOneShot(matchClip);
                 //    정답 사운드 파일 재생
 
                 firstCard.DestroyCard();
@@ -153,10 +153,6 @@ public class My_GameManager : MonoBehaviour
         if (currentIndex < correctOrder.Count)
         {
             orderTxt.text = $"맞춰야 할 카드 : {correctOrder[currentIndex]}";
-        }
-        else
-        {
-            orderTxt.text = "게임 클리어";
         }
     }
 
