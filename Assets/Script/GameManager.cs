@@ -11,10 +11,8 @@ public class GameManager : MonoBehaviour
     public Card secondCard; //    두번째 카드
 
     public Text timeTxt; //    시간 텍스트
-    public Text countTxt; //    남은 선택 횟수 텍스트
     public GameObject endTxt; //    게임오버 텍스트
 
-    public int count = 0;
     public int cardCount = 0;
     float floatTime = 0.0f;
 
@@ -34,12 +32,6 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
-        count = 20;
-        //    전체 카드의 갯수
-
-        countTxt.text = count.ToString();
-        //    남은 횟수 카운트 
-
         Time.timeScale = 1.0f;
         //    시간 설정
         //    0 - 아이에 멈춤
@@ -91,17 +83,6 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             //    남은 카드의 수 감소
 
-            if (firstCard.type == Card.CardType.Heal)
-            {
-                //    만약 최대 시간을 올린다면 최대 시간도 변수화 시킨다
-                //    그리고 만약 휫수라면 어떻게 해야할지 생각좀 해야지
-            }
-            if (firstCard.type == Card.CardType.Joker)
-            {
-                Debug.Log("조커카드의 짝이 맞춰졌습니다!");
-                //    조커카드일 경우
-            }
-
 
             if (cardCount == 0)
             //    만약 모든 카드를 맞췄다면
@@ -111,10 +92,6 @@ public class GameManager : MonoBehaviour
         }
         else
         {
-            firstCard.count--;
-            secondCard.count--;
-            //    선택한 두 카드의 남은 선택 횟수 감소
-
             firstCard.CloseCard();
             secondCard.CloseCard();
             //    카드 다시 덮기

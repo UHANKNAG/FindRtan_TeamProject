@@ -112,11 +112,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4029139388375606900}
-  - component: {fileID: 710730771021202412}
   - component: {fileID: 3464778818161623449}
   - component: {fileID: 641264562852565593}
+  - component: {fileID: -4766337806139975808}
   m_Layer: 0
-  m_Name: Card
+  m_Name: Card_Limited
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -139,28 +139,6 @@ Transform:
   - {fileID: 5081274413275869964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &710730771021202412
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2697256063465356631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d24ce30e7677043b04f2eb733bf9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  idx: 0
-  count: 0
-  countTxt: {fileID: 5868671840703290822}
-  front: {fileID: 8914366819468222208}
-  back: {fileID: 3834558560256000203}
-  anim: {fileID: 3464778818161623449}
-  frontImage: {fileID: 2228662654100588194}
-  btn: {fileID: 0}
-  clip: {fileID: 8300000, guid: 00ce04b407a7c6240829b109f26a1832, type: 3}
 --- !u!95 &3464778818161623449
 Animator:
   serializedVersion: 7
@@ -280,6 +258,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!114 &-4766337806139975808
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697256063465356631}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7c7263b25e1b3614582cb59607c12e8f, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  type: 0
+  idx: 0
+  count: 0
+  countTxt: {fileID: 5868671840703290822}
+  front: {fileID: 8914366819468222208}
+  back: {fileID: 3834558560256000203}
+  anim: {fileID: 3464778818161623449}
+  frontImage: {fileID: 2228662654100588194}
+  btn: {fileID: 0}
+  clip: {fileID: 8300000, guid: 00ce04b407a7c6240829b109f26a1832, type: 3}
 --- !u!1 &3834558560256000203
 GameObject:
   m_ObjectHideFlags: 0
@@ -658,8 +658,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 710730771021202412}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
+      - m_Target: {fileID: -4766337806139975808}
+        m_TargetAssemblyTypeName: MyCard, Assembly-CSharp
         m_MethodName: OpenCard
         m_Mode: 1
         m_Arguments:

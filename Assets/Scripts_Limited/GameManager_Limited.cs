@@ -2,20 +2,18 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // DOTween 라이브러리 필요
 
-public class MyGameManager : MonoBehaviour
+public class GamaManager_Limited : MonoBehaviour
 {
-    public static MyGameManager instance;
+    public static GamaManager_Limited instance;
 
-    public Card firstCard; //    첫번째 카드
-    public Card secondCard; //    두번째 카드
+    public Card_Limited firstCard; //    첫번째 카드
+    public Card_Limited secondCard; //    두번째 카드
 
     public Text timeTxt; //    시간 텍스트
-    public Text countTxt; //    남은 선택 횟수 텍스트
     public GameObject endTxt; //    게임오버 텍스트
 
-    public int count = 0;
+
     public int cardCount = 0;
     float floatTime = 0.0f;
 
@@ -35,11 +33,7 @@ public class MyGameManager : MonoBehaviour
 
     void Start()
     {
-        count = 20;
-        //    전체 카드의 갯수
 
-        countTxt.text = count.ToString();
-        //    남은 횟수 카운트 
 
         Time.timeScale = 1.0f;
         //    시간 설정
@@ -91,17 +85,6 @@ public class MyGameManager : MonoBehaviour
 
             cardCount -= 2;
             //    남은 카드의 수 감소
-
-            if (firstCard.type == Card.CardType.Heal)
-            {
-                //    만약 최대 시간을 올린다면 최대 시간도 변수화 시킨다
-                //    그리고 만약 휫수라면 어떻게 해야할지 생각좀 해야지
-            }
-            if (firstCard.type == Card.CardType.Joker)
-            {
-                Debug.Log("조커카드의 짝이 맞춰졌습니다!");
-                //    조커카드일 경우
-            }
 
 
             if (cardCount == 0)
