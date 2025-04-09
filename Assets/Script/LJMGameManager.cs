@@ -1,32 +1,44 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class LJMGameManager : MonoBehaviour
 {
-    public static GameManager instance;
+    public static LJMGameManager instance;
 
-    public Card firstCard; //    첫번째 카드
-    public Card secondCard; //    두번째 카드
+    Animator anim;
+
+    public LJMCard firstCard; //    첫번째 카드
+    public LJMCard secondCard; //    두번째 카드
 
     public Text timeTxt; //    시간 텍스트
     public GameObject endTxt; //    게임오버 텍스트
 
+    public Text comboTxt; //    콤보 텍스트
+    public Text scoreTxt; //    스코어 텍스트
+
     public int cardCount = 0;
     float floatTime = 0.0f;
+
+    int score = 0;
 
     public bool isOver = false;
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip oofClip;
+
+    int combo = 0; //    콤보
+
+    Vector3 comboOriginPos;
 
     private void Awake()
     {
-        if(instance == null) instance = this;
+        if (instance == null) instance = this;
         //    인스턴스 할당
-        
+
         audioSource = GetComponent<AudioSource>();
+        anim = comboTxt.GetComponent<Animator>();
         //    컴포넌트 불러오기
     }
 
@@ -42,6 +54,15 @@ public class GameManager : MonoBehaviour
         //    초기화 목록
         endTxt.SetActive(false);
         isOver = false;
+        combo = 0;
+        score = 0;
+        comboTxt.text = ($"{combo} Combo");
+
+        comboOriginPos = comboTxt.rectTransform.localPosition;
+
+        comboTxt.gameObject.SetActive(false);
+
+        
     }
 
     void Update()
@@ -49,7 +70,7 @@ public class GameManager : MonoBehaviour
         //    테스트를 위해 시간 비활성화
         //floatTime += Time.deltaTime;
 
-
+        /*
         if(floatTime >= 30f)
         //    만약 제한 시간이 끝난다면
         {
@@ -63,16 +84,17 @@ public class GameManager : MonoBehaviour
             //    게임 종료 후 카드 선택을 방지하기 위한 조치
             isOver=true;
         }
+        */
         timeTxt.text = floatTime.ToString("N2");
         //    소숫점의 2자리까지만 띄우기
     }
 
     public void Matched()
     {
-        if(firstCard.idx == secondCard.idx)
+        if (firstCard.idx == secondCard.idx)
         //    첫번째에 고른 카드와 두번째에 고른 카드가 일치한다면
         {
-
+            audioSource.volume = 1f;
             audioSource.PlayOneShot(clip);
             //    정답 사운드 파일 재생
 
@@ -83,6 +105,23 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             //    남은 카드의 수 감소
 
+            //    콤보 스택 시키기
+            combo++;
+            int totalCombo = combo - 1;
+
+            if (totalCombo > 0)
+            {
+                comboTxt.gameObject.SetActive(true);
+                anim.SetTrigger("GetCombo");
+            }
+
+            comboTxt.text = ($"{totalCombo} Combo");
+
+            //    스코어 추가
+            score += 1000 + (500 * totalCombo);
+            scoreTxt.text = score.ToString();
+
+            UpdateComboColor();
 
             if (cardCount == 0)
             //    만약 모든 카드를 맞췄다면
@@ -95,6 +134,9 @@ public class GameManager : MonoBehaviour
             firstCard.CloseCard();
             secondCard.CloseCard();
             //    카드 다시 덮기
+
+            ResetCombo();
+            //    콤보 초기화
         }
 
         firstCard = null;
@@ -107,5 +149,41 @@ public class GameManager : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+    }
+
+    void ResetCombo()
+    {
+        anim.SetTrigger("DoneCombo");
+        combo = 0;
+        comboTxt.text = ($"{combo} Combo");
+        UpdateComboColor();
+
+        audioSource.volume = 0.3f;
+        audioSource.PlayOneShot(oofClip);
+        
+
+        Invoke("ReturnComboTxt", 1f);
+
+    }
+
+    void UpdateComboColor()
+    {
+        int limitedCombo = Mathf.Clamp(combo, 1, 4);
+
+        Color targetColor = Color.white;
+
+        if (limitedCombo > 1)
+        {
+            float t = (float)(limitedCombo - 2) / 2f;
+            targetColor = new Color(1f, 1f - t, 1f - t);
+        }
+
+        comboTxt.color = targetColor;
+    }
+
+    void ReturnComboTxt()
+    {
+        comboTxt.rectTransform.localPosition = comboOriginPos;
+        comboTxt.gameObject.SetActive(false);
     }
 }

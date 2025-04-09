@@ -3,15 +3,16 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GamaManager_Limited : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GamaManager_Limited instance;
 
-    public Card firstCard; //    첫번째 카드
-    public Card secondCard; //    두번째 카드
+    public Card_Limited firstCard; //    첫번째 카드
+    public Card_Limited secondCard; //    두번째 카드
 
     public Text timeTxt; //    시간 텍스트
     public GameObject endTxt; //    게임오버 텍스트
+
 
     public int cardCount = 0;
     float floatTime = 0.0f;
@@ -32,6 +33,8 @@ public class GameManager : MonoBehaviour
 
     void Start()
     {
+
+
         Time.timeScale = 1.0f;
         //    시간 설정
         //    0 - 아이에 멈춤
@@ -92,6 +95,10 @@ public class GameManager : MonoBehaviour
         }
         else
         {
+            firstCard.count--;
+            secondCard.count--;
+            //    선택한 두 카드의 남은 선택 횟수 감소
+
             firstCard.CloseCard();
             secondCard.CloseCard();
             //    카드 다시 덮기

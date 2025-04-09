@@ -124,7 +124,7 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
+      - m_Target: {fileID: 468983404025615308}
         m_TargetAssemblyTypeName: LJMCard, Assembly-CSharp
         m_MethodName: OpenCard
         m_Mode: 1
@@ -349,13 +349,11 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 4029139388375606900}
-  - component: {fileID: -1068189634193953316}
+  - component: {fileID: 468983404025615308}
   - component: {fileID: 3464778818161623449}
   - component: {fileID: 641264562852565593}
-  - component: {fileID: 7097484913478126720}
-  - component: {fileID: 7970997303310206253}
   m_Layer: 0
-  m_Name: Card
+  m_Name: LJMCard
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -378,7 +376,7 @@ Transform:
   - {fileID: 5081274413275869964}
   m_Father: {fileID: 0}
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
---- !u!114 &-1068189634193953316
+--- !u!114 &468983404025615308
 MonoBehaviour:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -387,7 +385,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 2697256063465356631}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d24ce30e7677043b04f2eb733bf9d6, type: 3}
+  m_Script: {fileID: 11500000, guid: 52003c5b2fd7fef4fbb69341c8063329, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
@@ -396,7 +394,7 @@ MonoBehaviour:
   back: {fileID: 3834558560256000203}
   anim: {fileID: 3464778818161623449}
   frontImage: {fileID: 2228662654100588194}
-  btn: {fileID: 7155652965030929026}
+  btn: {fileID: 5962840914351830038}
   clip: {fileID: 8300000, guid: 00ce04b407a7c6240829b109f26a1832, type: 3}
 --- !u!95 &3464778818161623449
 Animator:
@@ -517,84 +515,6 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
---- !u!114 &7097484913478126720
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2697256063465356631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d24ce30e7677043b04f2eb733bf9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  type: 0
-  idx: 0
-  count: 0
-  countTxt: {fileID: 5868671840703290822}
-  front: {fileID: 8914366819468222208}
-  back: {fileID: 3834558560256000203}
-  anim: {fileID: 3464778818161623449}
-  frontImage: {fileID: 2228662654100588194}
-  btn: {fileID: 7970997303310206253}
-  clip: {fileID: 8300000, guid: 00ce04b407a7c6240829b109f26a1832, type: 3}
---- !u!114 &7970997303310206253
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2697256063465356631}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4e29b1a8efbd4b44bb3f3716e73f07ff, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  m_Navigation:
-    m_Mode: 3
-    m_WrapAround: 0
-    m_SelectOnUp: {fileID: 0}
-    m_SelectOnDown: {fileID: 0}
-    m_SelectOnLeft: {fileID: 0}
-    m_SelectOnRight: {fileID: 0}
-  m_Transition: 1
-  m_Colors:
-    m_NormalColor: {r: 1, g: 1, b: 1, a: 1}
-    m_HighlightedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_PressedColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 1}
-    m_SelectedColor: {r: 0.9607843, g: 0.9607843, b: 0.9607843, a: 1}
-    m_DisabledColor: {r: 0.78431374, g: 0.78431374, b: 0.78431374, a: 0.5019608}
-    m_ColorMultiplier: 1
-    m_FadeDuration: 0.1
-  m_SpriteState:
-    m_HighlightedSprite: {fileID: 0}
-    m_PressedSprite: {fileID: 0}
-    m_SelectedSprite: {fileID: 0}
-    m_DisabledSprite: {fileID: 0}
-  m_AnimationTriggers:
-    m_NormalTrigger: Normal
-    m_HighlightedTrigger: Highlighted
-    m_PressedTrigger: Pressed
-    m_SelectedTrigger: Selected
-    m_DisabledTrigger: Disabled
-  m_Interactable: 1
-  m_TargetGraphic: {fileID: 0}
-  m_OnClick:
-    m_PersistentCalls:
-      m_Calls:
-      - m_Target: {fileID: 7097484913478126720}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
-        m_MethodName: OpenCard
-        m_Mode: 1
-        m_Arguments:
-          m_ObjectArgument: {fileID: 0}
-          m_ObjectArgumentAssemblyTypeName: UnityEngine.Object, UnityEngine
-          m_IntArgument: 0
-          m_FloatArgument: 0
-          m_StringArgument: 
-          m_BoolArgument: 0
-        m_CallState: 2
 --- !u!1 &3834558560256000203
 GameObject:
   m_ObjectHideFlags: 0
@@ -783,7 +703,6 @@ GameObject:
   - component: {fileID: 1715119992304074953}
   - component: {fileID: 9128236274655840792}
   - component: {fileID: 7155652965030929026}
-  - component: {fileID: 5298216168463119348}
   m_Layer: 5
   m_Name: CardText
   m_TagString: Untagged
@@ -896,8 +815,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 5298216168463119348}
-        m_TargetAssemblyTypeName: Card, Assembly-CSharp
+      - m_Target: {fileID: 468983404025615308}
+        m_TargetAssemblyTypeName: LJMCard, Assembly-CSharp
         m_MethodName: OpenCard
         m_Mode: 1
         m_Arguments:
@@ -908,23 +827,3 @@ MonoBehaviour:
           m_StringArgument: 
           m_BoolArgument: 0
         m_CallState: 2
---- !u!114 &5298216168463119348
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 9196854904514850963}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 81d24ce30e7677043b04f2eb733bf9d6, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  idx: 0
-  countTxt: {fileID: 0}
-  front: {fileID: 0}
-  back: {fileID: 0}
-  anim: {fileID: 0}
-  frontImage: {fileID: 0}
-  btn: {fileID: 0}
-  clip: {fileID: 0}
