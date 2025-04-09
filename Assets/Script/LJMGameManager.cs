@@ -1,4 +1,5 @@
 using UnityEngine;
+using UnityEngine.Audio;
 using UnityEngine.UI;
 
 public class LJMGameManager : MonoBehaviour
@@ -25,6 +26,7 @@ public class LJMGameManager : MonoBehaviour
 
     AudioSource audioSource;
     public AudioClip clip;
+    public AudioClip oofClip;
 
     int combo = 0; //    콤보
 
@@ -92,6 +94,7 @@ public class LJMGameManager : MonoBehaviour
         if (firstCard.idx == secondCard.idx)
         //    첫번째에 고른 카드와 두번째에 고른 카드가 일치한다면
         {
+            audioSource.volume = 1f;
             audioSource.PlayOneShot(clip);
             //    정답 사운드 파일 재생
 
@@ -110,8 +113,6 @@ public class LJMGameManager : MonoBehaviour
             {
                 comboTxt.gameObject.SetActive(true);
                 anim.SetTrigger("GetCombo");
-                //    콤보 실행 디버그
-                Debug.Log("콤보 애니메이션 발동");
             }
 
             comboTxt.text = ($"{totalCombo} Combo");
@@ -157,7 +158,11 @@ public class LJMGameManager : MonoBehaviour
         comboTxt.text = ($"{combo} Combo");
         UpdateComboColor();
 
-        Invoke("RecoverComboTxt", 1f);
+        audioSource.volume = 0.3f;
+        audioSource.PlayOneShot(oofClip);
+        
+
+        Invoke("ReturnComboTxt", 1f);
 
     }
 
@@ -176,7 +181,7 @@ public class LJMGameManager : MonoBehaviour
         comboTxt.color = targetColor;
     }
 
-    void RecoverComboTxt()
+    void ReturnComboTxt()
     {
         comboTxt.rectTransform.localPosition = comboOriginPos;
         comboTxt.gameObject.SetActive(false);
