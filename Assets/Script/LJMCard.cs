@@ -1,26 +1,16 @@
-using System.Collections;
-using System.Collections.Generic;
-using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // DOTween ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½ ï¿½Ê¿ï¿½
 
-
-
-public class Card : MonoBehaviour
+public class LJMCard : MonoBehaviour
 {
-
     public int idx = 0;
 
-
-    public Text countTxt;
     public GameObject front;
     public GameObject back;
 
     public Animator anim;
 
     public SpriteRenderer frontImage;
-
 
     public Button btn;
 
@@ -30,18 +20,23 @@ public class Card : MonoBehaviour
 
     void Start()
     {
+        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
+        //    ÃÊ±âÈ­ ¸ñ·Ï
         btn.enabled = true;
+
+        //    µð¹ö±×¿ë ÃÊ±âÈ­ ¸ñ·Ï
+        front.SetActive(true);
+        back.SetActive(false);
     }
 
 
     void Update()
     {
-        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
-        if (GameManager.instance.isOver) btn.enabled = false;
+        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        if (LJMGameManager.instance.isOver) btn.enabled = false;
     }
 
     public void Setting(int num)
@@ -52,7 +47,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (GameManager.instance.secondCard != null) return;
+        if (LJMGameManager.instance.secondCard != null) return;
 
         audioSource.PlayOneShot(clip);
 
@@ -60,18 +55,16 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        if (GameManager.instance.firstCard == null)
+        if (LJMGameManager.instance.firstCard == null)
         {
-            GameManager.instance.firstCard = this;
+            LJMGameManager.instance.firstCard = this;
         }
         else
         {
-            GameManager.instance.secondCard = this;
-            GameManager.instance.Matched();
+            LJMGameManager.instance.secondCard = this;
+            LJMGameManager.instance.Matched();
         }
     }
-
-
     public void DestroyCard()
     {
         Invoke("DestroyCardInvoke", 1f);

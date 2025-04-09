@@ -3,14 +3,14 @@ using System.Collections.Generic;
 using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
-using DG.Tweening; // DOTween ï¿½ï¿½ï¿½Ìºê·¯ï¿½ï¿½ ï¿½Ê¿ï¿½
 
 
 
-public class Card : MonoBehaviour
+public class Card_Limited : MonoBehaviour
 {
 
     public int idx = 0;
+    public int count = 0;
 
 
     public Text countTxt;
@@ -30,18 +30,44 @@ public class Card : MonoBehaviour
 
     void Start()
     {
+        //    ÃÖ´ë·Î µÚÁýÀ» ¼ö ÀÖ´Â ¼ö
+        count = 3;
+
+        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
+        //    ÃÊ±âÈ­ ¸ñ·Ï
         btn.enabled = true;
     }
 
 
     void Update()
     {
-        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
-        if (GameManager.instance.isOver) btn.enabled = false;
+        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        if (GamaManager_Limited.instance.isOver) btn.enabled = false;
+
+        if (count <= 0)
+        //    ¸¸¾à Ä«¿îÆ®°¡ 0ÀÌ¶ó¸é
+        {
+            count = 0;
+            countTxt.color = Color.red;
+            back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
+
+
+            Invoke("GameEnd", 1f);
+  
+
+        }
+
+        //    ³²Àº Ä«¿îÆ® ¶ç¿ì±â(½Ç½Ã°£À¸·Î)
+        countTxt.text = count.ToString();
+    }
+
+    public void GameEnd()
+    {
+        Time.timeScale = 0f;
+        GamaManager_Limited.instance.endTxt.SetActive(true);
     }
 
     public void Setting(int num)
@@ -52,7 +78,7 @@ public class Card : MonoBehaviour
 
     public void OpenCard()
     {
-        if (GameManager.instance.secondCard != null) return;
+        if (GamaManager_Limited.instance.secondCard != null) return;
 
         audioSource.PlayOneShot(clip);
 
@@ -60,14 +86,14 @@ public class Card : MonoBehaviour
         front.SetActive(true);
         back.SetActive(false);
 
-        if (GameManager.instance.firstCard == null)
+        if (GamaManager_Limited.instance.firstCard == null)
         {
-            GameManager.instance.firstCard = this;
+            GamaManager_Limited.instance.firstCard = this;
         }
         else
         {
-            GameManager.instance.secondCard = this;
-            GameManager.instance.Matched();
+            GamaManager_Limited.instance.secondCard = this;
+            GamaManager_Limited.instance.Matched();
         }
     }
 
