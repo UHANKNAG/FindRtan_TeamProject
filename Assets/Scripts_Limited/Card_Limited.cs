@@ -53,10 +53,21 @@ public class Card_Limited : MonoBehaviour
             count = 0;
             countTxt.color = Color.red;
             back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
+
+
+            Invoke("GameEnd", 1f);
+  
+
         }
 
         //    남은 카운트 띄우기(실시간으로)
         countTxt.text = count.ToString();
+    }
+
+    public void GameEnd()
+    {
+        Time.timeScale = 0f;
+        GamaManager_Limited.instance.endTxt.SetActive(true);
     }
 
     public void Setting(int num)
