@@ -13,7 +13,7 @@ public class My_GameManager : MonoBehaviour
 
     public Text timeTxt; //    시간 텍스트
     public Text countTxt; //    남은 선택 횟수 텍스트
-    public Text orderTxt; // 맞춰야 할 순서 텍스트
+
     
     public GameObject endTxt; //    게임오버 텍스트
 
@@ -64,7 +64,7 @@ public class My_GameManager : MonoBehaviour
         // 중복 없이 카드 인덱스 0~9 한 번씩만 포함하고, 순서 섞기
         correctOrder = Enumerable.Range(0, 10).OrderBy(x => Random.Range(0f, 1f)).ToList();
 
-        UpdateOrderText();
+
         UpdateOrderVisual();
     }
 
@@ -110,7 +110,7 @@ public class My_GameManager : MonoBehaviour
                 //    남은 카드의 수 감소
 
                 currentIndex++;
-                UpdateOrderText();
+          
                 UpdateOrderVisual();
 
                 if (cardCount == 0)
@@ -148,13 +148,6 @@ public class My_GameManager : MonoBehaviour
         endTxt.SetActive(true);
     }
 
-    void UpdateOrderText()
-    {
-        if (currentIndex < correctOrder.Count)
-        {
-            orderTxt.text = $"맞춰야 할 카드 : {correctOrder[currentIndex]}";
-        }
-    }
 
     void UpdateOrderVisual()
     {

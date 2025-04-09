@@ -818,8 +818,8 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 0}
-        m_TargetAssemblyTypeName: LJMCard, Assembly-CSharp
+      - m_Target: {fileID: -2817980890191765620}
+        m_TargetAssemblyTypeName: Cardj, Assembly-CSharp
         m_MethodName: OpenCard
         m_Mode: 1
         m_Arguments:

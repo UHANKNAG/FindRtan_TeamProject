@@ -6,13 +6,9 @@ using UnityEngine.UI;
 
 public class Cardj : MonoBehaviour
 {
-    // 카드의 종류를 표현하는 열거형
-    public enum CardType { Nomal = 0, Heal, Joker };
 
-    public CardType type = CardType.Nomal;
 
     public int idx = 0;   // 카드 이미지/식별용 인덱스
-    public int count = 0; // 카드가 뒤집힐 수 있는 남은 횟수
 
     public Text countTxt;
     public GameObject front;
@@ -32,12 +28,6 @@ public class Cardj : MonoBehaviour
 
     void Start()
     {
-        // 특정 인덱스에 따라 카드 타입 결정 (예: 3 -> Heal, 4 -> Joker)
-        if (idx == 3) type = CardType.Heal;
-        else if (idx == 4) type = CardType.Joker;
-
-        // 카드 뒤집기 횟수를 3으로 설정
-        count = 3;
 
         // AudioSource 가져오기
         audioSource = GetComponent<AudioSource>();
@@ -52,13 +42,6 @@ public class Cardj : MonoBehaviour
         // 게임이 끝났다면(게임오버) 클릭 비활성화
         if (GameManagerj.instance.isOver) btn.enabled = false;
 
-        // 남은 뒤집기 횟수가 0 이하라면
-        if (count <= 0)
-        {
-            count = 0;
-            countTxt.color = Color.red;
-            back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
-        }
 
         // 남은 뒤집기 횟수를 UI에 표시
         //  countTxt.text = count.ToString();

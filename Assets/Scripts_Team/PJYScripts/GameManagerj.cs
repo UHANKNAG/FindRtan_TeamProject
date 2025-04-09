@@ -11,10 +11,8 @@ public class GameManagerj : MonoBehaviour
     public Cardj secondCard; // 두 번째 뒤집힌 카드
 
     public Text timeTxt;    // 시간 표시용 텍스트
-    public Text countTxt;   // 뒤집기 횟수 표시용 텍스트
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
 
-    public int count = 0;      // 남은 뒤집기 횟수
     public int cardCount = 0;  // 남은 카드 수
     float floatTime = 0.0f;    // 경과 시간
 
@@ -38,8 +36,6 @@ public class GameManagerj : MonoBehaviour
 
     void Start()
     {
-        count = 20; // 처음 주어지는 뒤집기 가능 횟수
-        countTxt.text = count.ToString();
 
         Time.timeScale = 1.0f;
         endTxt.SetActive(false);
@@ -85,18 +81,6 @@ public class GameManagerj : MonoBehaviour
             // 남아 있는 전체 카드 수 감소
             cardCount -= 2;
 
-            // Heal 카드일 경우(예: idx==3)
-            if (firstCard.type == Cardj.CardType.Heal)
-            {
-                // (예시) 시간 증가/회복 등 원하는 로직 추가 가능
-            }
-
-            // Joker 카드일 경우(예: idx==4)
-            if (firstCard.type == Cardj.CardType.Joker)
-            {
-                Debug.Log("조커카드 매칭! 특별 효과 발동!");
-            }
-
             // [추가] 이벤트 카드인지 확인 - 
             //       "마지막에 이벤트 패널이 뜨지 않도록" cardCount가 남아있을 때만 표시
             if (cardCount > 0)
@@ -116,9 +100,6 @@ public class GameManagerj : MonoBehaviour
         }
         else
         {
-            // 매칭 실패: 두 카드의 뒤집기 횟수 차감
-            firstCard.count--;
-            secondCard.count--;
 
             // 다시 뒷면으로
             firstCard.CloseCard();

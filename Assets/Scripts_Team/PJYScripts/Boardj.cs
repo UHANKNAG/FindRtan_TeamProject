@@ -41,6 +41,6 @@ public class Boardj : MonoBehaviour
         }
 
         // 생성된 카드 수를 GameManager에 전달
-        GameManagerj.instance.cardCount = arr.Length;
+        GameManagerj.instance.cardCount = arr.Length - 2;
     }
 }
