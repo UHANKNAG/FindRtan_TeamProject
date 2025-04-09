@@ -1,0 +1,435 @@
+fileFormatVersion: 2
+guid: ab762b9d68561aa4a8d55268a8e1cb9b
+TextureImporter:
+  internalIDToNameTable:
+  - first:
+      213: -1206126497543608430
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_0
+  - first:
+      213: -4726457102219959990
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_1
+  - first:
+      213: -5762246446819955542
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_2
+  - first:
+      213: -6485760914866917558
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_3
+  - first:
+      213: -4261727488989734668
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_4
+  - first:
+      213: -8643098266321534122
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_5
+  - first:
+      213: -3581306351319369451
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_6
+  - first:
+      213: -4222748673152510957
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_7
+  - first:
+      213: 3433478353535025052
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_8
+  - first:
+      213: 219548536450505330
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_9
+  - first:
+      213: -4061134835711195776
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_10
+  - first:
+      213: -1004080680389757571
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_11
+  - first:
+      213: -1997100837555866564
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_12
+  - first:
+      213: -8858650353093243759
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_13
+  - first:
+      213: 6429862908382336393
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_14
+  - first:
+      213: 4407725871155833245
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_15
+  - first:
+      213: -2346621650484574997
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_16
+  - first:
+      213: -3091961228149820622
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_17
+  - first:
+      213: 5829934472378534490
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_18
+  - first:
+      213: -8837887728144275491
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_19
+  - first:
+      213: 3413646240967718043
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_20
+  - first:
+      213: -2173786650184688312
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_21
+  - first:
+      213: 3764421193599671643
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_22
+  - first:
+      213: 5556893004949529615
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_23
+  - first:
+      213: 7496821806927058712
+    second: 4200x3500-greek-ancient-roman-temples-icon-clipart-freedesignfile_24
+  externalObjects: {}
+  serializedVersion: 13
+  mipmaps:
+    mipMapMode: 0
+    enableMipMap: 0
+    sRGBTexture: 1
+    linearTexture: 0
+    fadeOut: 0
+    borderMipMap: 0
+    mipMapsPreserveCoverage: 0
+    alphaTestReferenceValue: 0.5
+    mipMapFadeDistanceStart: 1
+    mipMapFadeDistanceEnd: 3
+  bumpmap:
+    convertToNormalMap: 0
+    externalNormalMap: 0
+    heightScale: 0.25
+    normalMapFilter: 0
+    flipGreenChannel: 0
+  isReadable: 0
+  streamingMipmaps: 0
+  streamingMipmapsPriority: 0
+  vTOnly: 0
+  ignoreMipmapLimit: 0
+  grayScaleToAlpha: 0
+  generateCubemap: 6
+  cubemapConvolution: 0
+  seamlessCubemap: 0
+  textureFormat: 1
+  maxTextureSize: 2048
+  textureSettings:
+    serializedVersion: 2
+    filterMode: 1
+    aniso: 1
+    mipBias: 0
+    wrapU: 1
+    wrapV: 1
+    wrapW: 1
+  nPOTScale: 0
+  lightmap: 0
+  compressionQuality: 50
+  spriteMode: 2
+  spriteExtrude: 1
+  spriteMeshType: 1
+  alignment: 0
+  spritePivot: {x: 0.5, y: 0.5}
+  spritePixelsToUnits: 100
+  spriteBorder: {x: 0, y: 0, z: 0, w: 0}
+  spriteGenerateFallbackPhysicsShape: 1
+  alphaUsage: 1
+  alphaIsTransparency: 1
+  spriteTessellationDetail: -1
+  textureType: 8
+  textureShape: 1
+  singleChannelComponent: 0
+  flipbookRows: 1
+  flipbookColumns: 1
+  maxTextureSizeSet: 0
+  compressionQualitySet: 0
+  textureFormatSet: 0
+  ignorePngGamma: 0
+  applyGammaDecoding: 0
+  swizzle: 50462976
+  cookieLightType: 0
+  platformSettings:
+  - serializedVersion: 4
+    buildTarget: DefaultTexturePlatform
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Standalone
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: Android
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
+  spriteSheet:
+    serializedVersion: 2
+    sprites:
+    - serializedVersion: 2
+      name: Bulding_0
+      rect:
+        serializedVersion: 2
+        x: 456
+        y: 725
+        width: 3290
+        height: 2054
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 5d42e236b53f90d4eb85e9b1be316ae4
+      internalID: 1247219431
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_1
+      rect:
+        serializedVersion: 2
+        x: 1607
+        y: 65
+        width: 47
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 2298cbd8fad6c974685f13b5d72c9ad1
+      internalID: -185609514
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_2
+      rect:
+        serializedVersion: 2
+        x: 1656
+        y: 65
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 33da95be406aa534fbf64998e302e127
+      internalID: -1713745386
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_3
+      rect:
+        serializedVersion: 2
+        x: 1701
+        y: 65
+        width: 39
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 8db54f5b63f95a441b772b13ee3fe165
+      internalID: 1102506357
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_4
+      rect:
+        serializedVersion: 2
+        x: 1742
+        y: 65
+        width: 16
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 05c06e1dab269c14182bcd5fea4ffe33
+      internalID: 1868968425
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_5
+      rect:
+        serializedVersion: 2
+        x: 1761
+        y: 48
+        width: 47
+        height: 64
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 6b2d407a96d716e4a860f1828e817934
+      internalID: -268335227
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_6
+      rect:
+        serializedVersion: 2
+        x: 1812
+        y: 65
+        width: 45
+        height: 47
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: b02a5e6e255b1de419d28faeb9908e80
+      internalID: 1844783635
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_7
+      rect:
+        serializedVersion: 2
+        x: 1859
+        y: 65
+        width: 90
+        height: 63
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: 7eaa0eb6f8448e14ba171a00ff18862e
+      internalID: 367851068
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_8
+      rect:
+        serializedVersion: 2
+        x: 1968
+        y: 48
+        width: 88
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: ebaaf9c8603709f4e97c9541fc78d20e
+      internalID: -1547824791
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    - serializedVersion: 2
+      name: Bulding_9
+      rect:
+        serializedVersion: 2
+        x: 2070
+        y: 48
+        width: 533
+        height: 80
+      alignment: 0
+      pivot: {x: 0, y: 0}
+      border: {x: 0, y: 0, z: 0, w: 0}
+      customData: 
+      outline: []
+      physicsShape: []
+      tessellationDetail: 0
+      bones: []
+      spriteID: bc949acd13e32db438a461b830a0bb0a
+      internalID: 126685858
+      vertices: []
+      indices: 
+      edges: []
+      weights: []
+    outline: []
+    customData: 
+    physicsShape: []
+    bones: []
+    spriteID: 3d39b604431acf543a5f680bfd8e47b0
+    internalID: 0
+    vertices: []
+    indices: 
+    edges: []
+    weights: []
+    secondaryTextures: []
+    spriteCustomMetadata:
+      entries: []
+    nameFileIdTable:
+      Bulding_0: 1247219431
+      Bulding_1: -185609514
+      Bulding_2: -1713745386
+      Bulding_3: 1102506357
+      Bulding_4: 1868968425
+      Bulding_5: -268335227
+      Bulding_6: 1844783635
+      Bulding_7: 367851068
+      Bulding_8: -1547824791
+      Bulding_9: 126685858
+  mipmapLimitGroupName: 
+  pSDRemoveMatte: 0
+  userData: 
+  assetBundleName: 
+  assetBundleVariant: 

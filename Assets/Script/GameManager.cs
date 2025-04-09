@@ -91,18 +91,6 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
             //    남은 카드의 수 감소
 
-            if (firstCard.type == Card.CardType.Heal)
-            {
-                //    만약 최대 시간을 올린다면 최대 시간도 변수화 시킨다
-                //    그리고 만약 휫수라면 어떻게 해야할지 생각좀 해야지
-            }
-            if (firstCard.type == Card.CardType.Joker)
-            {
-                Debug.Log("조커카드의 짝이 맞춰졌습니다!");
-                //    조커카드일 경우
-            }
-
-
             if (cardCount == 0)
             //    만약 모든 카드를 맞췄다면
             {
