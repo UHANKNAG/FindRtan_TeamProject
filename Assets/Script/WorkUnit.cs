@@ -54,10 +54,6 @@ public class WorkUnit : MonoBehaviour
                 rb.linearVelocity = GetMoveDirection() * speed;
                 break;
 
-            case STATE.STOP:
-                rb.linearVelocity = Vector2.zero;
-                break;
-
             case STATE.ATK:
                 rb.linearVelocity = Vector2.zero;
 
@@ -129,7 +125,12 @@ public class WorkUnit : MonoBehaviour
 
     private void OnCollisionStay2D(Collision2D collision)
     {
-        if (collision.gameObject.CompareTag("Enemy"))
+        if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
+        {
+            state = STATE.ATK;
+        }
+
+        if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemy"))
         {
             state = STATE.ATK;
         }

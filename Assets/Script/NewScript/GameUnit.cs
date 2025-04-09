@@ -4,7 +4,6 @@ using UnityEngine;
 public enum STATE
 {
     WORK = 0,
-    STOP,
     ATK,
     DIE,
     WIN

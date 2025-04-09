@@ -1,6 +1,8 @@
 using System.Collections;
+using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.U2D;
 using UnityEngine.UI;
 
 public class NewGameManager : MonoBehaviour
@@ -10,12 +12,18 @@ public class NewGameManager : MonoBehaviour
     public NewCard firstCard; //    첫번째 카드
     public NewCard secondCard; //    두번째 카드
 
+    public GameObject myBase;
+
     public bool isProcessing = false;
 
     AudioSource audioSource;
     public AudioClip clip;
 
     public NewBoard board;
+
+    public GameObject Unit;
+
+    public List<GameUnit> unitDataList;
 
     private void Awake()
     {
@@ -55,6 +63,18 @@ public class NewGameManager : MonoBehaviour
         
         if (firstCard.idx == secondCard.idx)
         {
+
+            GameObject newUnit = Instantiate(Unit, myBase.transform.position, Quaternion.identity);
+
+            WorkUnit workUnit = newUnit.GetComponent<WorkUnit>();
+            if (workUnit != null && firstCard.idx < unitDataList.Count)
+            {
+                GameUnit matchedUnit = unitDataList[firstCard.idx];
+                workUnit.gameUnit = Instantiate(matchedUnit); // 복제해서 할당!
+                workUnit.gameObject.GetComponent<SpriteRenderer>().sprite 
+                    = Resources.Load<Sprite>($"rtan{firstCard.idx}");
+            }
+
             if (board != null)
             {
                 board.ShuffleCards();

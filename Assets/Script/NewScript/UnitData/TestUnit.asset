@@ -13,10 +13,10 @@ MonoBehaviour:
   m_Name: TestUnit
   m_EditorClassIdentifier: 
   unitName: NOA
-  id: 0
+  id: 10
   hp: 150
   dmg: 20
   atkSpeed: 1
   range: 1.5
   speed: 1
-  stat: 0
+  state: 0
