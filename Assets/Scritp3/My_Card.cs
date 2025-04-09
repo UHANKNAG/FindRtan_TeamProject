@@ -8,14 +8,9 @@ using UnityEngine.UI;
 
 public class My_Card : MonoBehaviour
 {
-    //    카드 종류 만들기
-    public enum CardType { Nomal = 0, Heal, Joker};
-    public CardType type = CardType.Nomal;
+    public int idx; // 카드 고유 번호 (짝을 찾기 위한 기준)
+    public int count = 2; // 선택 가능 횟수 (기본 2회)
 
-    public int idx = 0;
-    public int count = 0;
-
-    public Text countTxt;
     public GameObject front;
     public GameObject back;
 
@@ -31,13 +26,6 @@ public class My_Card : MonoBehaviour
 
     void Start()
     {
-        //    특정 종류의 카드에게 특수능력 번호 부여하기
-        if(idx == 3) type = CardType.Heal;
-        else if(idx == 4) type = CardType.Joker;
-
-        //    최대로 뒤집을 수 있는 수
-        count = 3;
-
         //    컴포넌트 불러오기
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
@@ -56,12 +44,8 @@ public class My_Card : MonoBehaviour
         //    만약 카운트가 0이라면
         {
             count = 0;
-            countTxt.color = Color.red;
             back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
         }
-
-        //    남은 카운트 띄우기(실시간으로)
-        countTxt.text = count.ToString();
     }
 
     public void Setting(int num)

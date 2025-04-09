@@ -61,7 +61,7 @@ public class My_GameManager : MonoBehaviour
 
         currentIndex = 0;
 
-        correctOrder = new List<int> { 0, 1, 2, 3, 4, 5, 6, 7 };
+        correctOrder = new List<int> { 0, 0, 1, 1, 2, 2, 3, 3, 4, 4, 5, 5, 6, 6, 7, 7, 8, 8, 9, 9 };
         
         // Linq¸¦ »ç¿ëÇÑ ¼ÅÇÃ (OrderBy + Random)
         correctOrder = correctOrder.OrderBy(x => Random.Range(0f, 1f)).ToList();
@@ -169,11 +169,20 @@ public class My_GameManager : MonoBehaviour
             int nextIdx = correctOrder[currentIndex];
             Sprite sprite = Resources.Load<Sprite>($"rtan{nextIdx}");
             
-            if (targetCardImage != null)
+            if (targetCardImage != null && sprite != null)
             {
-                targetCardImage.enabled = false;
+                targetCardImage.sprite = sprite;
+                targetCardImage.enabled = true;
             }
         }
+        else
+        {
+            if (targetCardImage != null)
+            {
+                targetCardImage.enabled = false; // Å¬¸®¾î ½Ã ÀÌ¹ÌÁö ¼û±è
+            }
+        }
+
     }
 
     List<int> ShiffleList(List<int> list)
