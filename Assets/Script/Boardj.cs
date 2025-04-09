@@ -3,7 +3,7 @@ using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
 
-public class Board : MonoBehaviour
+public class Boardj : MonoBehaviour
 {
     public GameObject card;
 
@@ -30,7 +30,7 @@ public class Board : MonoBehaviour
 
             go.transform.position = new Vector2(x, y);
 
-            Card c = go.GetComponent<Card>();
+            Cardj c = go.GetComponent<Cardj>();
             c.Setting(arr[i]); // 카드 인덱스 설정
 
             // [추가] 해당 카드가 이벤트 쌍에 속하면 isEventCard = true
@@ -41,6 +41,6 @@ public class Board : MonoBehaviour
         }
 
         // 생성된 카드 수를 GameManager에 전달
-        GameManager.instance.cardCount = arr.Length;
+        GameManagerj.instance.cardCount = arr.Length;
     }
 }

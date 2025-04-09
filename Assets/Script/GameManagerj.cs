@@ -3,12 +3,12 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class GameManager : MonoBehaviour
+public class GameManagerj : MonoBehaviour
 {
-    public static GameManager instance;
+    public static GameManagerj instance;
 
-    public Card firstCard;  // 첫 번째 뒤집힌 카드
-    public Card secondCard; // 두 번째 뒤집힌 카드
+    public Cardj firstCard;  // 첫 번째 뒤집힌 카드
+    public Cardj secondCard; // 두 번째 뒤집힌 카드
 
     public Text timeTxt;    // 시간 표시용 텍스트
     public Text countTxt;   // 뒤집기 횟수 표시용 텍스트
@@ -86,13 +86,13 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
 
             // Heal 카드일 경우(예: idx==3)
-            if (firstCard.type == Card.CardType.Heal)
+            if (firstCard.type == Cardj.CardType.Heal)
             {
                 // (예시) 시간 증가/회복 등 원하는 로직 추가 가능
             }
 
             // Joker 카드일 경우(예: idx==4)
-            if (firstCard.type == Card.CardType.Joker)
+            if (firstCard.type == Cardj.CardType.Joker)
             {
                 Debug.Log("조커카드 매칭! 특별 효과 발동!");
             }

@@ -2,9 +2,9 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 
-public class AudioManager : MonoBehaviour
+public class AudioManagerj : MonoBehaviour
 {
-    public static AudioManager instance;
+    public static AudioManagerj instance;
 
     AudioSource audioSource;
     public AudioClip clip;

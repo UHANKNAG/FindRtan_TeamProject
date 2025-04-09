@@ -4,7 +4,7 @@ using Unity.VisualScripting.Antlr3.Runtime.Tree;
 using UnityEngine;
 using UnityEngine.UI;
 
-public class Card : MonoBehaviour
+public class Cardj : MonoBehaviour
 {
     // 카드의 종류를 표현하는 열거형
     public enum CardType { Nomal = 0, Heal, Joker };
@@ -50,7 +50,7 @@ public class Card : MonoBehaviour
     void Update()
     {
         // 게임이 끝났다면(게임오버) 클릭 비활성화
-        if (GameManager.instance.isOver) btn.enabled = false;
+        if (GameManagerj.instance.isOver) btn.enabled = false;
 
         // 남은 뒤집기 횟수가 0 이하라면
         if (count <= 0)
@@ -81,7 +81,7 @@ public class Card : MonoBehaviour
     public void OpenCard()
     {
         // 이미 두 번째 카드까지 뒤집혀 있다면 대기
-        if (GameManager.instance.secondCard != null) return;
+        if (GameManagerj.instance.secondCard != null) return;
 
         audioSource.PlayOneShot(clip); // 뒤집는 소리 재생
 
@@ -90,15 +90,15 @@ public class Card : MonoBehaviour
         back.SetActive(false);
 
         // 게임 매니저에서 첫 번째 카드가 비어있으면 이 카드를 첫 번째 카드로
-        if (GameManager.instance.firstCard == null)
+        if (GameManagerj.instance.firstCard == null)
         {
-            GameManager.instance.firstCard = this;
+            GameManagerj.instance.firstCard = this;
         }
         else
         {
             // 이미 첫 번째 카드가 있으면 두 번째 카드로
-            GameManager.instance.secondCard = this;
-            GameManager.instance.Matched(); 
+            GameManagerj.instance.secondCard = this;
+            GameManagerj.instance.Matched(); 
             // 두 장이 뒤집혔으므로 매칭 검사
         }
     }
