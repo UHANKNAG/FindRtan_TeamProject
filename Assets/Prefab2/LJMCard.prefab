@@ -350,8 +350,8 @@ GameObject:
   m_Component:
   - component: {fileID: 4029139388375606900}
   - component: {fileID: 468983404025615308}
-  - component: {fileID: 3464778818161623449}
   - component: {fileID: 641264562852565593}
+  - component: {fileID: 5834822707318578844}
   m_Layer: 0
   m_Name: LJMCard
   m_TagString: Untagged
@@ -389,35 +389,12 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   idx: 0
-  countTxt: {fileID: 0}
   front: {fileID: 8914366819468222208}
   back: {fileID: 3834558560256000203}
-  anim: {fileID: 3464778818161623449}
+  anim: {fileID: 5834822707318578844}
   frontImage: {fileID: 2228662654100588194}
   btn: {fileID: 5962840914351830038}
   clip: {fileID: 8300000, guid: 00ce04b407a7c6240829b109f26a1832, type: 3}
---- !u!95 &3464778818161623449
-Animator:
-  serializedVersion: 7
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2697256063465356631}
-  m_Enabled: 1
-  m_Avatar: {fileID: 0}
-  m_Controller: {fileID: 9100000, guid: ad7d3879a8f4e9a4c85fe7f699fb1a9c, type: 2}
-  m_CullingMode: 0
-  m_UpdateMode: 0
-  m_ApplyRootMotion: 0
-  m_LinearVelocityBlending: 0
-  m_StabilizeFeet: 0
-  m_AnimatePhysics: 0
-  m_WarningMessage: 
-  m_HasTransformHierarchy: 1
-  m_AllowConstantClipSamplingOptimization: 1
-  m_KeepAnimatorStateOnDisable: 0
-  m_WriteDefaultValuesOnDisable: 0
 --- !u!82 &641264562852565593
 AudioSource:
   m_ObjectHideFlags: 0
@@ -515,6 +492,28 @@ AudioSource:
     m_PreInfinity: 2
     m_PostInfinity: 2
     m_RotationOrder: 4
+--- !u!95 &5834822707318578844
+Animator:
+  serializedVersion: 7
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 2697256063465356631}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: ad7d3879a8f4e9a4c85fe7f699fb1a9c, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_StabilizeFeet: 0
+  m_AnimatePhysics: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorStateOnDisable: 0
+  m_WriteDefaultValuesOnDisable: 0
 --- !u!1 &3834558560256000203
 GameObject:
   m_ObjectHideFlags: 0
@@ -688,7 +687,7 @@ SpriteRenderer:
   m_Size: {x: 1, y: 1}
   m_AdaptiveModeThreshold: 0.5
   m_SpriteTileMode: 0
-  m_WasSpriteAssigned: 1
+  m_WasSpriteAssigned: 0
   m_MaskInteraction: 0
   m_SpriteSortPoint: 0
 --- !u!1 &9196854904514850963
