@@ -486,6 +486,7 @@ MonoBehaviour:
   targetCardImage: {fileID: 888076338}
   count: 0
   cardCount: 0
+  nextSceneIndex: 0
   isOver: 0
   correctOrder: 
   currentIndex: 0

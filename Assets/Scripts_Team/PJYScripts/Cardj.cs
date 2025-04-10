@@ -62,10 +62,13 @@ public class Cardj : MonoBehaviour
         if (GameManagerj.instance.secondCard != null) return;
 
         audioSource.PlayOneShot(clip); // 뒤집는 소리 재생
-
         anim.SetBool("isOpen", true);
+
+        // 이 과정은 CardFlip 함수를 통해 구현하였다.
+        /*
         front.SetActive(true);
         back.SetActive(false);
+        */
 
         // 게임 매니저에서 첫 번째 카드가 비어있으면 이 카드를 첫 번째 카드로
         if (GameManagerj.instance.firstCard == null)
@@ -108,4 +111,18 @@ public class Cardj : MonoBehaviour
         front.SetActive(false);
         back.SetActive(true);
     }
+
+    public void CardFlip()           // 유니티에서 Card 프리펫에 붙어있는 Flip 애니메이션이 실행되는 중, 90도 회전한 순간 front를 비활성화하고 back을 활성화하는 함수
+    {
+        front.SetActive(true);       // 90도 회전한 순간 Card의 front와 back의 상태를 바꿔 마치 카드가 뒤집힌 것처럼 보이게 한다
+        back.SetActive(false);
+    }
+
+    public void CardReverseFlip()    // 유니티에서 Card 프리펫에 붙어있는 ReverseFlip 애니메이션이 실행되는 중, 90도 회전한 순간 back을 비활성화하고 front을 활성화하는 함수
+    {
+        front.SetActive(false);
+        back.SetActive(true);
+    }
+
+
 }

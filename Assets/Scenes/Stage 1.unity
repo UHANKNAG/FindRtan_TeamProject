@@ -1051,6 +1051,7 @@ MonoBehaviour:
   timeTxt: {fileID: 110793221}
   endTxt: {fileID: 333807340}
   nextTxt: {fileID: 1743252455}
+  nextSceneIndex: 0
   cardCount: 0
 --- !u!1 &1743252455
 GameObject:

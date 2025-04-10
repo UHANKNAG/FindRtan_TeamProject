@@ -552,6 +552,7 @@ MonoBehaviour:
   timeTxt: {fileID: 1045194403}
   endTxt: {fileID: 1870907778}
   nextTxt: {fileID: 176208384}
+  nextSceneIndex: 0
   cardCount: 0
   isOver: 0
   clip: {fileID: 8300000, guid: 615554c9f15407c40ac43bd03d73cffe, type: 3}
