@@ -1,6 +1,7 @@
 using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class GameManagerj : MonoBehaviour
@@ -26,6 +27,8 @@ public class GameManagerj : MonoBehaviour
     [Header("이벤트 카드 UI")]
     public GameObject eventPanel;
 
+    public int nextSceneIndex;
+
     private void Awake()
     {
         // 싱글턴 할당
@@ -33,6 +36,8 @@ public class GameManagerj : MonoBehaviour
 
         // 오디오 소스 가져오기
         audioSource = GetComponent<AudioSource>();
+
+        nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     void Start()
@@ -109,7 +114,9 @@ public class GameManagerj : MonoBehaviour
     }
 
     public void Victory() {
-        isOver = true;
+        if (nextSceneIndex > PlayerPrefs.GetInt("stageAt")) {
+            PlayerPrefs.SetInt("stageAt", nextSceneIndex);
+        }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
 

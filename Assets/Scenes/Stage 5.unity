@@ -806,12 +806,13 @@ MonoBehaviour:
   firstCard: {fileID: 0}
   secondCard: {fileID: 0}
   timeTxt: {fileID: 1045194403}
-  endTxt: {fileID: 0}
-  nextTxt: {fileID: 0}
+  endTxt: {fileID: 661135274}
+  nextTxt: {fileID: 1722347835}
   cardCount: 0
   isOver: 0
   clip: {fileID: 8300000, guid: 615554c9f15407c40ac43bd03d73cffe, type: 3}
   eventPanel: {fileID: 291839927}
+  nextSceneIndex: 0
 --- !u!1 &1045194402
 GameObject:
   m_ObjectHideFlags: 0

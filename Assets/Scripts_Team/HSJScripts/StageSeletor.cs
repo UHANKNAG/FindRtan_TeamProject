@@ -1,21 +1,22 @@
+using Unity.Profiling;
+using UnityEditor.SceneManagement;
 using UnityEngine;
 using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class StageSeletor : MonoBehaviour
 {
-    public Button[] stgButtons;
-    // Start is called once before the first execution of Update after the MonoBehaviour is created
-    void Start()
-    {
-        int stageAt = PlayerPrefs.GetInt("stageAt", 2);
-        // PlayerPrefs 임시적인 데이터 저장
+    public Button button;
+    public string stageNum;
+    public Text stageText;
 
-        for (int i = 0; i < stgButtons.Length; i++) {
-            if (i + 2 > stageAt)
-                stgButtons[i].interactable = false;
-        }
-        // 현재 Stage가 Scene Num보다 작으면 접근 false
+    void Start() {
+        stageText = button.GetComponentInChildren<Text>();
+        stageNum = stageText.text;
+    }
+
+    public void OpenScene() {
+        SceneManager.LoadScene("Stage " + stageNum);
     }
 
 }

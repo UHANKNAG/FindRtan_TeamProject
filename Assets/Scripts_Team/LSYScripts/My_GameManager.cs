@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using System.Linq;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class My_GameManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class My_GameManager : MonoBehaviour
 
     public int count = 0;
     public int cardCount = 0;
+    public int nextSceneIndex;
     float floatTime = 0.0f;
 
     public bool isOver = false;
@@ -39,6 +41,8 @@ public class My_GameManager : MonoBehaviour
         
         audioSource = GetComponent<AudioSource>();
         //    ������Ʈ �ҷ�����
+
+        nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     void Start()
@@ -112,7 +116,9 @@ public class My_GameManager : MonoBehaviour
     }
 
     public void Victory() {
-        isOver = true;
+        if (nextSceneIndex > PlayerPrefs.GetInt("stageAt")) {
+            PlayerPrefs.SetInt("stageAt", nextSceneIndex);
+        }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
     }

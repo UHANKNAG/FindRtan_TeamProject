@@ -1,5 +1,6 @@
 using UnityEngine;
 using UnityEngine.Audio;
+using UnityEngine.SceneManagement;
 using UnityEngine.UI;
 
 public class LJMGameManager : MonoBehaviour
@@ -22,6 +23,7 @@ public class LJMGameManager : MonoBehaviour
     float floatTime = 0.0f;
 
     int score = 0;
+    public int nextSceneIndex;
 
     public bool isOver = false;
 
@@ -39,7 +41,7 @@ public class LJMGameManager : MonoBehaviour
    
         audioSource = GetComponent<AudioSource>();
         anim = comboTxt.GetComponent<Animator>();
- 
+        nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     void Start()
@@ -117,7 +119,9 @@ public class LJMGameManager : MonoBehaviour
     }
 
     public void Victory() {
-        isOver = true;
+        if (nextSceneIndex > PlayerPrefs.GetInt("stageAt")) {
+            PlayerPrefs.SetInt("stageAt", nextSceneIndex);
+        }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
     }

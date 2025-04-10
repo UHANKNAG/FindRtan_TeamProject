@@ -3,7 +3,7 @@ using UnityEngine.SceneManagement;
 
 public class StageButton : MonoBehaviour
 {
-    public void ToStage()
+        public void ToStage()
     {
         SceneManager.LoadScene("StageSelectScene");
     }

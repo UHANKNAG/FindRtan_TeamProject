@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
     public GameObject nextTxt;
     
+    public int nextSceneIndex;
 
     public int cardCount = 0;
 
@@ -27,9 +28,11 @@ public class GameManager : MonoBehaviour
 
 
     private void Awake() {
+        time = 60.0f;
         if (instance == null)
             instance = this;
         Time.timeScale = 1.0f;
+        nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
     }
 
     // Start is called before the first frame update
@@ -37,6 +40,8 @@ public class GameManager : MonoBehaviour
     {
         Time.timeScale = 1.0f;
         audioSource = GetComponent<AudioSource>();
+        Debug.Log(SceneManager.GetActiveScene().buildIndex);
+        Debug.Log(nextSceneIndex);
     }
 
     // Update is called once per frame
@@ -78,6 +83,9 @@ public class GameManager : MonoBehaviour
     }
 
     public void Victory() {
+        if (nextSceneIndex > PlayerPrefs.GetInt("stageAt")) {
+            PlayerPrefs.SetInt("stageAt", nextSceneIndex);
+        }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
     }
