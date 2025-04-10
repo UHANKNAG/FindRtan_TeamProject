@@ -1,111 +1,84 @@
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.PackageManager;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
+
 
 public class GameManager : MonoBehaviour
 {
     public static GameManager instance;
 
-    public Card firstCard; //    ù��° ī��
-    public Card secondCard; //    �ι�° ī��
-
-    public Text timeTxt; //    �ð� �ؽ�Ʈ
-    public GameObject endTxt; //    ���ӿ��� �ؽ�Ʈ
-
-    public int cardCount = 0;
-    float floatTime = 0.0f;
-
-    public bool isOver = false;
+    public Card firstCard;
+    public Card secondCard;
 
     AudioSource audioSource;
     public AudioClip clip;
 
-    private void Awake()
-    {
-        if(instance == null) instance = this;
-        //    �ν��Ͻ� �Ҵ�
-        
-        audioSource = GetComponent<AudioSource>();
-        //    ������Ʈ �ҷ�����
+    public Text timeTxt;
+    public GameObject endTxt;
+    public GameObject nextTxt;
+    
+
+    public int cardCount = 0;
+
+    float time = 60.0f;
+
+
+    private void Awake() {
+        if (instance == null)
+            instance = this;
+        Time.timeScale = 1.0f;
     }
 
+    // Start is called before the first frame update
     void Start()
     {
         Time.timeScale = 1.0f;
-        //    �ð� ����
-        //    0 - ���̿� ����
-        //    0.5 - �ð��� �������� ������ �귯��
-        //    1 - �ð��� �����ϰ� �귯��
-
-
-        //    �ʱ�ȭ ���
-        endTxt.SetActive(false);
-        isOver = false;
+        audioSource = GetComponent<AudioSource>();
     }
 
+    // Update is called once per frame
     void Update()
     {
-        //    �׽�Ʈ�� ���� �ð� ��Ȱ��ȭ
-        //floatTime += Time.deltaTime;
+        time -= Time.deltaTime;
+        timeTxt.text = time.ToString("N2");
 
-
-        if(floatTime >= 30f)
-        //    ���� ���� �ð��� �����ٸ�
-        {
-            Time.timeScale = 0f;
-            //    ���� ���ο� ������ �־ ����� �ʹٸ�
-            //    ����Ƽ���� �ð��ʰ� �ؽ�Ʈ�� ����� ������ ��
-            //    �Ʒ��� endTxt�� �ƴ� gameoverTxt�� ���� ����
-            //    ����� �ð� �ʰ��� ���ӿ��������� �˸� �� �ִ�.
-            endTxt.SetActive(true);
-
-            //    ���� ���� �� ī�� ������ �����ϱ� ���� ��ġ
-            isOver=true;
+        if (time <= 0.0f) {
+            GameOver();
         }
-        timeTxt.text = floatTime.ToString("N2");
-        //    �Ҽ����� 2�ڸ������� ����
     }
 
-    public void Matched()
-    {
-        if(firstCard.idx == secondCard.idx)
-        //    ù��°�� ���� ī��� �ι�°�� ���� ī�尡 ��ġ�Ѵٸ�
-        {
-
+    public void Matched() {
+        if (firstCard.idx == secondCard.idx) {
             audioSource.PlayOneShot(clip);
-            //    ���� ���� ���� ���
 
             firstCard.DestroyCard();
             secondCard.DestroyCard();
-            //    ���� ī�� ����
-
             cardCount -= 2;
-            //    ���� ī���� �� ����
 
-
-            if (cardCount == 0)
-            //    ���� ��� ī�带 ����ٸ�
-            {
-                Invoke("GameOver", 1f);
+            if (cardCount == 0) {
+                Victory();
             }
         }
-        else
-        {
+        else {
             firstCard.ClosedCard();
             secondCard.ClosedCard();
-            //    ī�� �ٽ� ����
         }
 
         firstCard = null;
         secondCard = null;
-        //    ���õ� ī�� �����ϱ�
     }
 
-    void GameOver()
+    public void GameOver()
     {
-        isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+    }
+
+    public void Victory() {
+        Time.timeScale = 0f;
+        nextTxt.SetActive(true);
     }
 }

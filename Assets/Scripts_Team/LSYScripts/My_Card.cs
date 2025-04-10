@@ -41,7 +41,6 @@ public class My_Card : MonoBehaviour
 
     void Update()
     {
-        //    ���� ���� �������¶�� ������ ��� ��Ȱ��ȭ �ϱ�
         if (My_GameManager.instance.isOver) 
             btn.enabled = false;
     }
