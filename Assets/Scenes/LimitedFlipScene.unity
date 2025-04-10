@@ -131,7 +131,7 @@ GameObject:
   - component: {fileID: 176208389}
   - component: {fileID: 176208388}
   - component: {fileID: 176208387}
-  - component: {fileID: 176208386}
+  - component: {fileID: 176208390}
   m_Layer: 5
   m_Name: NextTxt
   m_TagString: Untagged
@@ -158,18 +158,6 @@ RectTransform:
   m_AnchoredPosition: {x: -0.0000038146973, y: 0}
   m_SizeDelta: {x: 760, y: 300}
   m_Pivot: {x: 0.5, y: 0.5}
---- !u!114 &176208386
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 176208384}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55dd5b473dd24f34eabe4bd82ce10673, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
 --- !u!114 &176208387
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -214,9 +202,9 @@ MonoBehaviour:
   m_OnClick:
     m_PersistentCalls:
       m_Calls:
-      - m_Target: {fileID: 176208386}
-        m_TargetAssemblyTypeName: Retry, Assembly-CSharp
-        m_MethodName: RetryBtn_Limited
+      - m_Target: {fileID: 176208390}
+        m_TargetAssemblyTypeName: StageButton, Assembly-CSharp
+        m_MethodName: ToStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -268,6 +256,18 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 176208384}
   m_CullTransparentMesh: 1
+--- !u!114 &176208390
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 176208384}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 7f94d9cd54a2b254abc771f594505dc1, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
 --- !u!1 &202042501
 GameObject:
   m_ObjectHideFlags: 0
@@ -923,7 +923,7 @@ GameObject:
   - component: {fileID: 1870907783}
   - component: {fileID: 1870907784}
   m_Layer: 5
-  m_Name: EndTxt
+  m_Name: RetryTxt
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -1035,8 +1035,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 1870907784}
-        m_TargetAssemblyTypeName: Retry, Assembly-CSharp
-        m_MethodName: RetryBtn_Limited
+        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
+        m_MethodName: Retry
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -1055,7 +1055,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 1870907778}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 55dd5b473dd24f34eabe4bd82ce10673, type: 3}
+  m_Script: {fileID: 11500000, guid: 00cea207b1a673943ba24b988a4d0a14, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1660057539 &9223372036854775807

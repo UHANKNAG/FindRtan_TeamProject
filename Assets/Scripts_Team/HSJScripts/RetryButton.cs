@@ -5,6 +5,7 @@ using UnityEngine.SceneManagement;
 public class RetryButton : MonoBehaviour
 {
     public void Retry() {
-        SceneManager.LoadScene("StageSelectScene");
+        SceneManager.LoadScene(SceneManager.GetActiveScene().name);
+        // 자기 자신 불러오기
     }
 }
