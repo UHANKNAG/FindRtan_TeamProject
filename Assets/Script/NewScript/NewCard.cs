@@ -48,20 +48,29 @@ public class NewCard : MonoBehaviour
 
     public void OpenCard()
     {
+        //    두번째 카드가 null이 아니라면 꺼져! 즉 버그 방지용
         if (NewGameManager.instance.secondCard != null) return;
+
+        //    만약 제한이 걸려있는 상태라면 꺼져!
         if (NewGameManager.instance.isProcessing) return;
         
+        //    카드 뒤집는 소리 재생하기
         audioSource.PlayOneShot(clip);
 
+        //    애니메이션 조건 세팅
         anim.SetBool("isOpen", true);
+
+        //    카드 앞 뒤 뒤집기
         front.SetActive(true);
         back.SetActive(false);
 
+        //    첫번째 카드가 없다면?
         if (NewGameManager.instance.firstCard == null)
         {
             //    만약 첫번째 카드가 없다면 첫번째 카드로 할당하기
             NewGameManager.instance.firstCard = this;
         }
+        //    그 외의 상황
         else
         {
             //    첫번째 카드가 있다면 두번째 카드 할당하기
@@ -75,12 +84,14 @@ public class NewCard : MonoBehaviour
     //    짝이 맞이 않았을 경우
     public void CloseCard()
     {
+        //    애니메이션 세팅 후 카드 앞뒤 뒤집기
         anim.SetBool("isOpen", false);
         front.SetActive(false);
         back.SetActive(true);
     }
 
     //    짝이 맞았을 경우
+    //    이 코드는 다른곳에서 실행됨! NewBoard에서 실행됨
     public void ForceCloseImmediately()
     {
         anim.SetBool("isOpen", false);
