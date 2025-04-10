@@ -205,8 +205,8 @@ MonoBehaviour:
     m_PersistentCalls:
       m_Calls:
       - m_Target: {fileID: 160953821}
-        m_TargetAssemblyTypeName: RetryButton, Assembly-CSharp
-        m_MethodName: Retry
+        m_TargetAssemblyTypeName: StageButton, Assembly-CSharp
+        m_MethodName: ToStage
         m_Mode: 1
         m_Arguments:
           m_ObjectArgument: {fileID: 0}
@@ -278,7 +278,7 @@ MonoBehaviour:
   m_GameObject: {fileID: 160953814}
   m_Enabled: 1
   m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 00cea207b1a673943ba24b988a4d0a14, type: 3}
+  m_Script: {fileID: 11500000, guid: 7f94d9cd54a2b254abc771f594505dc1, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
 --- !u!1 &228357359
