@@ -1,10 +1,10 @@
 fileFormatVersion: 2
-guid: 1aa5e3d21b32d32489c64f8be24b1bbd
+guid: 9ae7b9249234a1943bbaa86bb79bcbdb
 TextureImporter:
   internalIDToNameTable:
   - first:
-      213: -1269366335769883476
-    second: Team9_0
+      213: 4218974394507514321
+    second: Team8_0
   externalObjects: {}
   serializedVersion: 13
   mipmaps:
@@ -48,10 +48,10 @@ TextureImporter:
   compressionQuality: 50
   spriteMode: 2
   spriteExtrude: 1
-  spriteMeshType: 1
+  spriteMeshType: 0
   alignment: 0
   spritePivot: {x: 0.5, y: 0.5}
-  spritePixelsToUnits: 400
+  spritePixelsToUnits: 350
   spriteBorder: {x: 0, y: 0, z: 0, w: 0}
   spriteGenerateFallbackPhysicsShape: 1
   alphaUsage: 1
@@ -109,17 +109,30 @@ TextureImporter:
     ignorePlatformSupport: 0
     androidETC2FallbackOverride: 0
     forceMaximumCompressionQuality_BC6H_BC7: 0
+  - serializedVersion: 4
+    buildTarget: WebGL
+    maxTextureSize: 2048
+    resizeAlgorithm: 0
+    textureFormat: -1
+    textureCompression: 1
+    compressionQuality: 50
+    crunchedCompression: 0
+    allowsAlphaSplitting: 0
+    overridden: 0
+    ignorePlatformSupport: 0
+    androidETC2FallbackOverride: 0
+    forceMaximumCompressionQuality_BC6H_BC7: 0
   spriteSheet:
     serializedVersion: 2
     sprites:
     - serializedVersion: 2
-      name: Team9_0
+      name: Team8_0
       rect:
         serializedVersion: 2
         x: 0
         y: 0
-        width: 375
-        height: 500
+        width: 330
+        height: 330
       alignment: 0
       pivot: {x: 0, y: 0}
       border: {x: 0, y: 0, z: 0, w: 0}
@@ -128,8 +141,8 @@ TextureImporter:
       physicsShape: []
       tessellationDetail: -1
       bones: []
-      spriteID: cacc8920b0e426ee0800000000000000
-      internalID: -1269366335769883476
+      spriteID: 1d1d615dbdecc8a30800000000000000
+      internalID: 4218974394507514321
       vertices: []
       indices: 
       edges: []
@@ -148,7 +161,7 @@ TextureImporter:
     spriteCustomMetadata:
       entries: []
     nameFileIdTable:
-      Team9_0: -1269366335769883476
+      Team8_0: 4218974394507514321
   mipmapLimitGroupName: 
   pSDRemoveMatte: 0
   userData: 
