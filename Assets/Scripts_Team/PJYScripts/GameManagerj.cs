@@ -106,18 +106,18 @@ public class GameManagerj : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
-
-        // // 혹시 모를 패널 잔여 표시를 방지하기 위해 이벤트 패널 확실히 비활성화
-        // if (eventPanel != null)
-        // {
-        //     eventPanel.SetActive(false);
-        // }
     }
 
     public void Victory() {
         isOver = true;
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+
+        // 혹시 모를 패널 잔여 표시를 방지하기 위해 이벤트 패널 확실히 비활성화
+        if (eventPanel != null)
+        {
+            eventPanel.SetActive(false);
+        }
     }
 
     // [추가] 이벤트 패널 표시
