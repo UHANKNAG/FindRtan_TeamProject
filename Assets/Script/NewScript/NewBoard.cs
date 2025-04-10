@@ -38,16 +38,16 @@ public class NewBoard : MonoBehaviour
             arr[i * 2 + 1] = i;
         }
 
-        // 카드 섞기
+        //    카드 섞기
         arr = arr.OrderBy(x => Random.Range(0f, 100f)).ToArray();
         
-        // 카드 전부 닫기 애니메이션 먼저 실행 시키기
+        //    카드 전부 닫기 애니메이션 먼저 실행 시키기
         foreach (NewCard card in cards)
         {
             card.ForceCloseImmediately();
         }
 
-        // idx, 이미지 갱신하기
+        //    idx, 이미지 갱신하기
         for (int i = 0; i < cards.Length; i++)
         {
             cards[i].Setting(arr[i]);
