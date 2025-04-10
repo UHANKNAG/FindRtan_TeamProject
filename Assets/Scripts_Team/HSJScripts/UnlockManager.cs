@@ -4,18 +4,9 @@ using UnityEngine.UI;
 
 public class UnlockManager : MonoBehaviour
 {
-    public static UnlockManager instance;
 
     private int stageAt;
     public Button[] stgButtons;
-    
-    private void Awake() {
-        if (instance == null)
-            instance = this;
-        else
-            Destroy(instance);
-        
-    }
     
     void Start() {
         stageAt = PlayerPrefs.GetInt("stageAt", 2);
