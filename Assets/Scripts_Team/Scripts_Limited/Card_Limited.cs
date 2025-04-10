@@ -30,44 +30,34 @@ public class Card_Limited : MonoBehaviour
 
     void Start()
     {
-        //    �ִ�� ������ �� �ִ� ��
         count = 3;
 
-        //    ������Ʈ �ҷ�����
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    �ʱ�ȭ ���
         btn.enabled = true;
     }
 
 
     void Update()
     {
-        //    ���� ���� �������¶�� ������ ��� ��Ȱ��ȭ �ϱ�
         if (GamaManager_Limited.instance.isOver) btn.enabled = false;
 
         if (count <= 0)
-        //    ���� ī��Ʈ�� 0�̶��
         {
             count = 0;
             countTxt.color = Color.red;
             back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
 
-
             Invoke("GameEnd", 1f);
-  
-
         }
 
-        //    ���� ī��Ʈ ����(�ǽð�����)
         countTxt.text = count.ToString();
     }
 
     public void GameEnd()
     {
-        Time.timeScale = 0f;
-        GamaManager_Limited.instance.endTxt.SetActive(true);
+        GamaManager_Limited.instance.GameOver();
     }
 
     public void Setting(int num)

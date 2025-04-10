@@ -41,10 +41,6 @@ public class Cardj : MonoBehaviour
     {
         // 게임이 끝났다면(게임오버) 클릭 비활성화
         if (GameManagerj.instance.isOver) btn.enabled = false;
-
-
-        // 남은 뒤집기 횟수를 UI에 표시
-        //  countTxt.text = count.ToString();
     }
 
     /// <summary>
@@ -54,7 +50,6 @@ public class Cardj : MonoBehaviour
     public void Setting(int num)
     {
         idx = num;
-        // 예시로 Resources 폴더에서 "rtan0", "rtan1", ... 등을 로드
         frontImage.sprite = Resources.Load<Sprite>($"Sprite/Team{idx}");
     }
 
