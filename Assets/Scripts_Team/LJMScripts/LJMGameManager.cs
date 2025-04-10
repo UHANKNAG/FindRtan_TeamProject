@@ -15,6 +15,7 @@ public class LJMGameManager : MonoBehaviour
     public Text timeTxt;
     public GameObject endTxt;    
     public GameObject nextTxt;
+    public GameObject teamInfo;
 
     public Text comboTxt; 
     public Text scoreTxt; 
@@ -42,6 +43,7 @@ public class LJMGameManager : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
         anim = comboTxt.GetComponent<Animator>();
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        teamInfo.SetActive(false);
     }
 
     void Start()
@@ -124,6 +126,7 @@ public class LJMGameManager : MonoBehaviour
         }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
     }
 
     void ResetCombo()

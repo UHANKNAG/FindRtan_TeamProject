@@ -29,8 +29,9 @@ public class Boardj : MonoBehaviour
                 GameManagerj.instance.mineCardImage.enabled = true;
             }
         }
-                // 16개의 카드를 생성하여 배치
-                for (int i = 0; i < 16; i++)
+        
+        // 16개의 카드를 생성하여 배치
+        for (int i = 0; i < 16; i++)
         {
             GameObject go = Instantiate(card, this.transform);
 

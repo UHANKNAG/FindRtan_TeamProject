@@ -14,6 +14,7 @@ public class GamaManager_Limited : MonoBehaviour
     public Text timeTxt;
     public GameObject endTxt;
     public GameObject nextTxt;
+    public GameObject teamInfo;
 
     public int nextSceneIndex;
 
@@ -30,6 +31,7 @@ public class GamaManager_Limited : MonoBehaviour
         if(instance == null) instance = this;
         audioSource = GetComponent<AudioSource>();
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        teamInfo.SetActive(false);
     }
 
     void Start()
@@ -81,6 +83,7 @@ public class GamaManager_Limited : MonoBehaviour
         }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
     }
     
     public void GameOver()

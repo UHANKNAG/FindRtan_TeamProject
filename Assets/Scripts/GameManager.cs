@@ -20,7 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
     public GameObject nextTxt;
     public GameObject teamInfo;
-    
+
     public int nextSceneIndex;
     public int cardCount = 0;
 
@@ -87,10 +87,8 @@ public class GameManager : MonoBehaviour
         if (nextSceneIndex > PlayerPrefs.GetInt("stageAt")) {
             PlayerPrefs.SetInt("stageAt", nextSceneIndex);
         }
-        Destroy(firstCard);
-        Destroy(secondCard);
         Time.timeScale = 0f;
-        nextTxt.SetActive(true);
         teamInfo.SetActive(true);
+        nextTxt.SetActive(true);
     }
 }

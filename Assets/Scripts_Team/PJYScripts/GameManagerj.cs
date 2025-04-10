@@ -12,8 +12,12 @@ public class GameManagerj : MonoBehaviour
     public Cardj secondCard; // 두 번째 뒤집힌 카드
 
     public Text timeTxt;    // 시간 표시용 텍스트
+
+    public GameObject teamInfo;
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
     public GameObject nextTxt;
+
+    public GameObject deleteCard = GameObject.Find("Board");
 
     public GameObject mineTxt;
     public Image mineCardImage; // 지뢰 카드 이미지
@@ -41,6 +45,7 @@ public class GameManagerj : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        teamInfo.SetActive(false);
     }
 
     void Start()
@@ -94,7 +99,7 @@ public class GameManagerj : MonoBehaviour
             // 모든 카드가 사라졌으면 게임 종료
             if (cardCount == 0)
             {
-                Invoke("Victory", 1f);
+                Invoke("Victory", 0.5f);
             }
         }
         else
@@ -123,6 +128,10 @@ public class GameManagerj : MonoBehaviour
         }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
+
+        for (int i = 0; i < deleteCard.transform.childCount; i++) 
+            Destroy(deleteCard.transform.GetChild(i).gameObject);
 
         // 혹시 모를 패널 잔여 표시를 방지하기 위해 이벤트 패널 확실히 비활성화
         if (eventPanel != null)

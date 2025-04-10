@@ -18,6 +18,7 @@ public class My_GameManager : MonoBehaviour
     
     public GameObject endTxt;
     public GameObject nextTxt;
+    public GameObject teamInfo;
 
     public Image targetCardImage;
 
@@ -43,6 +44,8 @@ public class My_GameManager : MonoBehaviour
         //    ������Ʈ �ҷ�����
 
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        teamInfo.SetActive(false);
     }
 
     void Start()
@@ -121,6 +124,7 @@ public class My_GameManager : MonoBehaviour
         }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
     }
 
 
