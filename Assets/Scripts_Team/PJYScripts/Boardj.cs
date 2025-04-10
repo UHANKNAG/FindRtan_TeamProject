@@ -20,8 +20,17 @@ public class Boardj : MonoBehaviour
         int eventPairIndex = Random.Range(0, 8);
         Debug.Log("이벤트 카드 인덱스: " + eventPairIndex);
 
-        // 16개의 카드를 생성하여 배치
-        for(int i = 0; i < 16; i++)
+        if (GameManagerj.instance.mineCardImage != null) // 지뢰카드 이미지 표시
+        {
+            Sprite sprite = Resources.Load<Sprite>($"Sprite/Team{eventPairIndex}");
+            if (sprite != null)
+            {
+                GameManagerj.instance.mineCardImage.sprite = sprite;
+                GameManagerj.instance.mineCardImage.enabled = true;
+            }
+        }
+                // 16개의 카드를 생성하여 배치
+                for (int i = 0; i < 16; i++)
         {
             GameObject go = Instantiate(card, this.transform);
 

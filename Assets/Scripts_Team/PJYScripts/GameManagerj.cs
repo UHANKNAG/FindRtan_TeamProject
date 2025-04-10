@@ -15,6 +15,8 @@ public class GameManagerj : MonoBehaviour
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
     public GameObject nextTxt;
 
+    public Image mineCardImage; // 지뢰 카드 이미지
+
     public int cardCount = 0;  // 남은 카드 수
     float floatTime = 0.0f;    // 경과 시간
 
