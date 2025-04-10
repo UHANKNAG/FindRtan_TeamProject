@@ -20,14 +20,11 @@ public class LJMCard : MonoBehaviour
 
     void Start()
     {
-        //    ������Ʈ �ҷ�����
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    �ʱ�ȭ ���
         btn.enabled = true;
 
-        //    ����׿� �ʱ�ȭ ���
         front.SetActive(true);
         back.SetActive(false);
     }
@@ -35,7 +32,6 @@ public class LJMCard : MonoBehaviour
 
     void Update()
     {
-        //    ���� ���� �������¶�� ������ ��� ��Ȱ��ȭ �ϱ�
         if (LJMGameManager.instance.isOver) btn.enabled = false;
     }
 

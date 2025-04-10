@@ -16,6 +16,7 @@ public class My_GameManager : MonoBehaviour
 
     
     public GameObject endTxt;
+    public GameObject nextTxt;
 
     public Image targetCardImage;
 
@@ -81,7 +82,7 @@ public class My_GameManager : MonoBehaviour
 
                 if (cardCount == 0)
                 {
-                    Invoke("GameOver", 1f);
+                    Invoke("Victory", 1f);
                 }
             }
             else
@@ -103,11 +104,17 @@ public class My_GameManager : MonoBehaviour
         secondCard = null;
     }
 
-    void GameOver()
+    public void GameOver()
     {
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+    }
+
+    public void Victory() {
+        isOver = true;
+        Time.timeScale = 0f;
+        nextTxt.SetActive(true);
     }
 
 
