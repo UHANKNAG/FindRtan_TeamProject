@@ -15,6 +15,7 @@ public class GameManagerj : MonoBehaviour
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
     public GameObject nextTxt;
 
+    public GameObject mineTxt;
     public Image mineCardImage; // 지뢰 카드 이미지
 
     public int cardCount = 0;  // 남은 카드 수
@@ -113,6 +114,7 @@ public class GameManagerj : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+        mineTxt.SetActive(false);
     }
 
     public void Victory() {
