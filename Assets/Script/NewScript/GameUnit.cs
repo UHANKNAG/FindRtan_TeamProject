@@ -21,6 +21,8 @@ public class GameUnit : ScriptableObject
     public float range;
     public float speed;
 
+    public Sprite sprite;
+
     [Header("유닛의 상태")]
     public STATE state;
 }

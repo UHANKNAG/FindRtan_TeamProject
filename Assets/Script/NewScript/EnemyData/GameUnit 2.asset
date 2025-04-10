@@ -10,13 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 706eba2fb4b41374780ede9c79a31d62, type: 3}
-  m_Name: TestEnemy
+  m_Name: GameUnit 2
   m_EditorClassIdentifier: 
-  unitName: Enemy
-  id: 10
+  unitName: "\uCE74\uD0C0\uB098 \uAC80\uC0AC"
+  id: 22
   hp: 100
-  dmg: 30
-  atkSpeed: 2
+  dmg: 10
+  atkSpeed: 3
   range: 1
-  speed: 1.5
+  speed: 1.4
+  sprite: {fileID: 4419860453053927153, guid: 02ce72e372f43684fb8092498854757d, type: 3}
   state: 0

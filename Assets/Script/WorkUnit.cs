@@ -7,11 +7,14 @@ public class WorkUnit : MonoBehaviour
 
     public string unitName;
     public int id;
+    float maxHp;
     public float hp;
     public float dmg;
     public float atkSpeed;
     public float range;
     public float speed;
+
+    public Sprite sprite;
 
     public STATE state;
 
@@ -20,17 +23,27 @@ public class WorkUnit : MonoBehaviour
     private Rigidbody2D rb;
     private Collider2D col;
 
-    private void Awake()
+    public RectTransform hpBar;
+
+    private void Start()
     {
+        if (gameUnit == null)
+        {
+            Debug.LogWarning("gameUnit이 할당되지 않았습니다.");
+            return;
+        }
+
         // GameUnit 데이터를 초기화
         unitName = gameUnit.unitName;
         id = gameUnit.id;
+        maxHp = gameUnit.hp;
         hp = gameUnit.hp;
         dmg = gameUnit.dmg;
         atkSpeed = gameUnit.atkSpeed;
         range = gameUnit.range;
         speed = gameUnit.speed;
         state = gameUnit.state;
+        sprite = gameUnit.sprite;
 
         rb = GetComponent<Rigidbody2D>();
         col = GetComponent<Collider2D>();
@@ -42,6 +55,12 @@ public class WorkUnit : MonoBehaviour
 
         MoveUnit();
         HandleAttackCooldown();
+        HPbar();
+    }
+
+    void HPbar()
+    {
+        hpBar.localScale = new Vector3(hp / maxHp, 1f, 1f);
     }
 
     private void MoveUnit()
@@ -80,15 +99,17 @@ public class WorkUnit : MonoBehaviour
     {
         isAttacking = true;
 
-        // 공격 딜레이
         yield return new WaitForSeconds(1f / atkSpeed);
 
-        // 대상 레이어 결정
+        // 대상 레이어 이름 결정
         string targetLayer = CompareTag("Player") ? "Enemy" : "Player";
-        LayerMask targetMask = LayerMask.GetMask(targetLayer);
 
+        // 레이어 마스크 설정
+        LayerMask targetMask = LayerMask.GetMask(targetLayer);
+       
         // 범위 내 적 탐색
         Collider2D target = Physics2D.OverlapCircle(transform.position, range, targetMask);
+
         if (target != null)
         {
             WorkUnit enemyUnit = target.GetComponent<WorkUnit>();
@@ -98,9 +119,7 @@ public class WorkUnit : MonoBehaviour
             }
         }
 
-        // 상태 복귀
         state = STATE.WORK;
-
         attackCooldown = 1f / atkSpeed;
         isAttacking = false;
     }
@@ -110,29 +129,23 @@ public class WorkUnit : MonoBehaviour
         hp -= damage;
         if (hp <= 0.01f)
         {
-            Die();
+            Destroy(gameObject, 0.1f);
         }
-    }
-
-    private void Die()
-    {
-        state = STATE.DIE;
-        tag = "Untagged";
-        col.enabled = false;
-        rb.linearVelocity = Vector2.zero;
-        Destroy(gameObject, 0.1f);
     }
 
     private void OnCollisionStay2D(Collision2D collision)
     {
+        //    자신이 플레이어고 적을 만났다면
         if (collision.gameObject.CompareTag("Enemy") && gameObject.CompareTag("Player"))
         {
             state = STATE.ATK;
         }
 
+        //    자신이 적이고 플레이어를 만났다면
         if (collision.gameObject.CompareTag("Player") && gameObject.CompareTag("Enemy"))
         {
             state = STATE.ATK;
         }
+       
     }
 }

@@ -14,9 +14,9 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: NOA
   id: 10
-  hp: 150
+  hp: 250
   dmg: 20
   atkSpeed: 1
-  range: 1.5
+  range: 1
   speed: 1
   state: 0

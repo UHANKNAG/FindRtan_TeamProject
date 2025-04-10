@@ -14,9 +14,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   unitName: D
   id: 3
-  hp: 150
+  hp: 200
   dmg: 20
   atkSpeed: 1
   range: 1.5
   speed: 1
+  sprite: {fileID: 21300000, guid: 16811a13e9be23849a47727d132aef63, type: 3}
   state: 0
