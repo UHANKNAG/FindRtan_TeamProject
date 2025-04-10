@@ -19,9 +19,9 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public GameObject endTxt;
     public GameObject nextTxt;
+    public GameObject teamInfo;
     
     public int nextSceneIndex;
-
     public int cardCount = 0;
 
     float time = 60.0f;
@@ -33,6 +33,7 @@ public class GameManager : MonoBehaviour
             instance = this;
         Time.timeScale = 1.0f;
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        teamInfo.SetActive(false);
     }
 
     // Start is called before the first frame update
@@ -64,7 +65,7 @@ public class GameManager : MonoBehaviour
             cardCount -= 2;
 
             if (cardCount == 0) {
-                Victory();
+                Invoke("Victory", 0.5f);
             }
         }
         else {
@@ -86,7 +87,10 @@ public class GameManager : MonoBehaviour
         if (nextSceneIndex > PlayerPrefs.GetInt("stageAt")) {
             PlayerPrefs.SetInt("stageAt", nextSceneIndex);
         }
+        Destroy(firstCard);
+        Destroy(secondCard);
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
     }
 }
