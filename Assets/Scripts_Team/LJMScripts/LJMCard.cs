@@ -20,14 +20,14 @@ public class LJMCard : MonoBehaviour
 
     void Start()
     {
-        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         btn.enabled = true;
 
-        //    µð¹ö±×¿ë ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½ï¿½ï¿½ï¿½×¿ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         front.SetActive(true);
         back.SetActive(false);
     }
@@ -35,14 +35,14 @@ public class LJMCard : MonoBehaviour
 
     void Update()
     {
-        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
         if (LJMGameManager.instance.isOver) btn.enabled = false;
     }
 
     public void Setting(int num)
     {
         idx = num;
-        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"Sprite/Team{idx}");
     }
 
     public void OpenCard()

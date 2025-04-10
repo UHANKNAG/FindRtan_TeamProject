@@ -8,8 +8,8 @@ using UnityEngine.UI;
 
 public class My_Card : MonoBehaviour
 {
-    public int idx; // Ä«µå °íÀ¯ ¹øÈ£ (Â¦À» Ã£±â À§ÇÑ ±âÁØ)
-    public int count = 2; // ¼±ÅÃ °¡´É È½¼ö (±âº» 2È¸)
+    public int idx; // Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È£ (Â¦ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½)
+    public int count = 2; // ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ È½ï¿½ï¿½ (ï¿½âº» 2È¸)
 
     public GameObject front;
     public GameObject back;
@@ -26,11 +26,11 @@ public class My_Card : MonoBehaviour
 
     void Start()
     {
-        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         btn.enabled = true;
         if (btn != null)
         {
@@ -41,7 +41,7 @@ public class My_Card : MonoBehaviour
 
     void Update()
     {
-        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
         if (My_GameManager.instance.isOver) 
             btn.enabled = false;
     }
@@ -49,7 +49,7 @@ public class My_Card : MonoBehaviour
     public void Setting(int num)
     {
         idx = num;
-        frontImage.sprite = Resources.Load<Sprite>($"Sprite/team{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"Sprite/Team{idx}");
     }
 
     public void OpenCard()

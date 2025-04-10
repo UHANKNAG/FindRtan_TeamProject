@@ -30,25 +30,25 @@ public class Card_Limited : MonoBehaviour
 
     void Start()
     {
-        //    ÃÖ´ë·Î µÚÁýÀ» ¼ö ÀÖ´Â ¼ö
+        //    ï¿½Ö´ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ö´ï¿½ ï¿½ï¿½
         count = 3;
 
-        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         btn.enabled = true;
     }
 
 
     void Update()
     {
-        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
         if (GamaManager_Limited.instance.isOver) btn.enabled = false;
 
         if (count <= 0)
-        //    ¸¸¾à Ä«¿îÆ®°¡ 0ÀÌ¶ó¸é
+        //    ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ®ï¿½ï¿½ 0ï¿½Ì¶ï¿½ï¿½
         {
             count = 0;
             countTxt.color = Color.red;
@@ -60,7 +60,7 @@ public class Card_Limited : MonoBehaviour
 
         }
 
-        //    ³²Àº Ä«¿îÆ® ¶ç¿ì±â(½Ç½Ã°£À¸·Î)
+        //    ï¿½ï¿½ï¿½ï¿½ Ä«ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½(ï¿½Ç½Ã°ï¿½ï¿½ï¿½ï¿½ï¿½)
         countTxt.text = count.ToString();
     }
 
@@ -73,7 +73,7 @@ public class Card_Limited : MonoBehaviour
     public void Setting(int num)
     {
         idx = num;
-        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"Sprite/Team{idx}");
     }
 
     public void OpenCard()

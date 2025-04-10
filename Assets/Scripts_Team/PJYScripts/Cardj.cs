@@ -55,7 +55,7 @@ public class Cardj : MonoBehaviour
     {
         idx = num;
         // 예시로 Resources 폴더에서 "rtan0", "rtan1", ... 등을 로드
-        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"Sprite/Team{idx}");
     }
 
     /// <summary>
