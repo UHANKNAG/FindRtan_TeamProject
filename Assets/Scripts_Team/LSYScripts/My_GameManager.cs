@@ -97,6 +97,8 @@ public class My_GameManager : MonoBehaviour
             {
                 firstCard.CloseCard();
                 secondCard.CloseCard();
+                firstCard = null;
+                secondCard = null;
             }
         }
         else
