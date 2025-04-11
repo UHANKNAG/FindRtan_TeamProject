@@ -20,6 +20,7 @@ public class GameManager : MonoBehaviour
     public GameObject endTxt;
     public GameObject nextTxt;
     public GameObject teamInfo;
+    public GameObject deleteCard;
 
     public int nextSceneIndex;
     public int cardCount = 0;
@@ -34,6 +35,7 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 1.0f;
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         teamInfo.SetActive(false);
+        deleteCard = GameObject.Find("Board");
     }
 
     // Start is called before the first frame update
@@ -61,9 +63,9 @@ public class GameManager : MonoBehaviour
         if (firstCard.idx == secondCard.idx) {
             audioSource.PlayOneShot(clip);
 
-            firstCard.anim.SetBool("isMatched", true);  // Ã¹¹øÂ° Ä«µåÀÇ ¾Ö´Ï¸ÞÀÌÅÍ ÆÄ¶ó¹ÌÅÍ isMatched¸¦ true·Î ¹Ù²ãÁØ´Ù.
-            secondCard.anim.SetBool("isMatched", true); // µÎ¹øÂ° Ä«µåÀÇ ¾Ö´Ï¸ÞÀÌÅÍ ÆÄ¶ó¹ÌÅÍ isMatched¸¦ true·Î ¹Ù²ãÁØ´Ù.
-            Invoke("DestroyCard", 1f);               // 1ÃÊ ÈÄ¿¡ DestroyCard ÇÔ¼ö¸¦ È£ÃâÇÑ´Ù.
+            firstCard.anim.SetBool("isMatched", true);  // Ã¹ï¿½ï¿½Â° Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ isMatchedï¿½ï¿½ trueï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
+            secondCard.anim.SetBool("isMatched", true); // ï¿½Î¹ï¿½Â° Ä«ï¿½ï¿½ï¿½ï¿½ ï¿½Ö´Ï¸ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ä¶ï¿½ï¿½ï¿½ï¿½ isMatchedï¿½ï¿½ trueï¿½ï¿½ ï¿½Ù²ï¿½ï¿½Ø´ï¿½.
+            Invoke("DestroyCard", 1f);               // 1ï¿½ï¿½ ï¿½Ä¿ï¿½ DestroyCard ï¿½Ô¼ï¿½ï¿½ï¿½ È£ï¿½ï¿½ï¿½Ñ´ï¿½.
 
 
             cardCount -= 2;
@@ -106,5 +108,9 @@ public class GameManager : MonoBehaviour
         Time.timeScale = 0f;
         teamInfo.SetActive(true);
         nextTxt.SetActive(true);
+
+        for (int i = 0; i < deleteCard.transform.childCount; i++) 
+            Destroy(deleteCard.transform.GetChild(i).gameObject);
+
     }
 }

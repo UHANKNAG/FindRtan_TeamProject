@@ -1372,6 +1372,7 @@ MonoBehaviour:
   endTxt: {fileID: 333807340}
   nextTxt: {fileID: 1849890654}
   teamInfo: {fileID: 578716302}
+  deleteCard: {fileID: 1311971380}
   nextSceneIndex: 0
   cardCount: 0
 --- !u!1 &1727649102
