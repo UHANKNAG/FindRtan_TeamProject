@@ -50,11 +50,6 @@ public class NewGameManager : MonoBehaviour
         isProcessing = false;
     }
 
-    void Update()
-    {
-
-    }
-
     public IEnumerator CheckMatchCoroutine()
     {
         isProcessing = true;
@@ -67,21 +62,33 @@ public class NewGameManager : MonoBehaviour
         
         if (firstCard.idx == secondCard.idx)
         {
-
+            //    게임 오브젝트 생성(Unit 프리팹을 생성시킴)
             GameObject newUnit = Instantiate(Unit, 
                 new Vector2(myBase.transform.position.x, 2), Quaternion.identity);
 
+            //    컴포넌트 캐싱 / 컴포넌트 가져오기
             WorkUnit workUnit = newUnit.GetComponent<WorkUnit>();
+
+            //    만약 캐싱 받아오기에 성공하고, 인덱스의 범위가 데이터 수 보다 많다면?
             if (workUnit != null && firstCard.idx < unitDataList.Count)
+            //    왜 이렇게 될까?
+            //    인덱스의 범위는 0~7, 그리고 가져오는 데이터의 수는 8
+            //    즉, 인덱스의 범위가 잘못되거나 버그가 나 8을 넘어버리면 버그가 발생한 것으로 간주함
+            //    따라서 idx가 유효한 범위(0~7)인지 확인하기 위한 안전장치
             {
+                //    게임 유닛을 데이터 리스트에 있는 범위의 데이터를 가져와 만들기
                 GameUnit matchedUnit = unitDataList[firstCard.idx];
 
+                //    해당 데이터를 생성되었던 개체에게 복사하여 주기
                 workUnit.gameUnit = Instantiate(matchedUnit);
+                //    복사하지 않고 데이터를 그대로 주면 전체의 데이터가 수정되어버림!
 
+                //    스프라이트가 적용된 게임 오브젝트가 자식객채로 있으니 찾아서 할당해주기
                 workUnit.transform.Find("UnitSprite").GetComponent<SpriteRenderer>().sprite
                     = matchedUnit.sprite;
             }
 
+            //    보드가 할당되어 있다면 카드를 섞어 다시 재배치 하기
             if (board != null)
             {
                 board.ShuffleCards();
@@ -89,10 +96,11 @@ public class NewGameManager : MonoBehaviour
         }
         else
         {
+            //    매치가 안됬다면 다시 뒤집기
             firstCard.CloseCard();
             secondCard.CloseCard();
         }
-
+        //    선택되었던 카드 할당 해제하기
         firstCard = null;
         secondCard = null;
 
@@ -100,15 +108,20 @@ public class NewGameManager : MonoBehaviour
         isProcessing = false; 
     }
 
-
+    //    게임오버!
     public void GameOver()
     {
         Time.timeScale = 0;
         gameOverTxt.gameObject.SetActive(true);
     }
 
+    //    다시 시도하기!
     public void Retry()
     {
         SceneManager.LoadScene("NewScene");
+    }
+    public void Victory()
+    {
+
     }
 }

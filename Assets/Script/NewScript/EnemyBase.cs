@@ -1,6 +1,7 @@
 using NUnit.Framework;
 using System.Collections;
 using System.Collections.Generic;
+using UnityEditor.Experimental.GraphView;
 using UnityEngine;
 
 public class EnemyBase : MonoBehaviour
@@ -21,6 +22,8 @@ public class EnemyBase : MonoBehaviour
     {
         Dead();
     }
+
+    
 
     void Dead()
     {
@@ -44,9 +47,20 @@ public class EnemyBase : MonoBehaviour
 
         float rand = Random.value; // 0.0 ~ 1.0
 
+        //    랜덤 값 구하기
+        //    20 = 60%
+        //    21 = 20%
+        //    22 = 20%
+        randomID = rand < 0.6f ? 20 :
+                          rand < 0.8f ? 21 :
+                          22;
+
+        //    아래랑도 같은 역할을 수행함
+        /*
         if (rand < 0.6f) randomID = 20;
         else if (rand < 0.8f) randomID = 21;
         else randomID = 22;
+        */
 
         //    랜덤한 수를 찾은 뒤 List전체를 본 후 맞는 id가 있는지 탐색
         foreach (GameUnit unit in enemyDataList)
