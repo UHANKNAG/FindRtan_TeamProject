@@ -12,8 +12,16 @@ public class GameManagerj : MonoBehaviour
     public Cardj secondCard; // 두 번째 뒤집힌 카드
 
     public Text timeTxt;    // 시간 표시용 텍스트
+
+    public GameObject teamInfo;
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
     public GameObject nextTxt;
+
+    public GameObject deleteCard;
+
+
+    public GameObject mineTxt;
+    public Image mineCardImage; // 지뢰 카드 이미지
 
     public int cardCount = 0;  // 남은 카드 수
     float floatTime = 0.0f;    // 경과 시간
@@ -38,6 +46,9 @@ public class GameManagerj : MonoBehaviour
         audioSource = GetComponent<AudioSource>();
 
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        teamInfo.SetActive(false);
+
+        deleteCard = GameObject.Find("Board");
     }
 
     void Start()
@@ -71,8 +82,9 @@ public class GameManagerj : MonoBehaviour
             audioSource.PlayOneShot(clip);
 
             // 두 카드 제거
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
+            firstCard.anim.SetBool("isMatched", true);  // 첫번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+            secondCard.anim.SetBool("isMatched", true); // 두번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+            Invoke("DestroyCard", 1f);               // 1초 후에 DestroyCard 함수를 호출한다.
 
             // 남아 있는 전체 카드 수 감소
             cardCount -= 2;
@@ -91,7 +103,7 @@ public class GameManagerj : MonoBehaviour
             // 모든 카드가 사라졌으면 게임 종료
             if (cardCount == 0)
             {
-                Invoke("Victory", 1f);
+                Invoke("Victory", 0.5f);
             }
         }
         else
@@ -99,9 +111,17 @@ public class GameManagerj : MonoBehaviour
             // 다시 뒷면으로
             firstCard.CloseCard();
             secondCard.CloseCard();
+            // 다음 비교를 위해 두 카드 정보 초기화
+            firstCard = null;
+            secondCard = null;
         }
 
-        // 다음 비교를 위해 두 카드 정보 초기화
+
+    }
+    public void DestroyCard()
+    {
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
         firstCard = null;
         secondCard = null;
     }
@@ -111,6 +131,7 @@ public class GameManagerj : MonoBehaviour
         isOver = true;
         Time.timeScale = 0f;
         endTxt.SetActive(true);
+        mineTxt.SetActive(false);
     }
 
     public void Victory() {
@@ -119,6 +140,10 @@ public class GameManagerj : MonoBehaviour
         }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
+
+        for (int i = 0; i < deleteCard.transform.childCount; i++) 
+            Destroy(deleteCard.transform.GetChild(i).gameObject);
 
         // 혹시 모를 패널 잔여 표시를 방지하기 위해 이벤트 패널 확실히 비활성화
         if (eventPanel != null)

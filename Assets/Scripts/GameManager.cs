@@ -19,9 +19,10 @@ public class GameManager : MonoBehaviour
     public Text timeTxt;
     public GameObject endTxt;
     public GameObject nextTxt;
-    
-    public int nextSceneIndex;
+    public GameObject teamInfo;
+    public GameObject deleteCard;
 
+    public int nextSceneIndex;
     public int cardCount = 0;
 
     float time = 60.0f;
@@ -33,6 +34,8 @@ public class GameManager : MonoBehaviour
             instance = this;
         Time.timeScale = 1.0f;
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+        teamInfo.SetActive(false);
+        deleteCard = GameObject.Find("Board");
     }
 
     // Start is called before the first frame update
@@ -56,25 +59,41 @@ public class GameManager : MonoBehaviour
     }
 
     public void Matched() {
+
         if (firstCard.idx == secondCard.idx) {
             audioSource.PlayOneShot(clip);
 
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
+            firstCard.anim.SetBool("isMatched", true);  // ù��° ī���� �ִϸ����� �Ķ���� isMatched�� true�� �ٲ��ش�.
+            secondCard.anim.SetBool("isMatched", true); // �ι�° ī���� �ִϸ����� �Ķ���� isMatched�� true�� �ٲ��ش�.
+            Invoke("DestroyCard", 1f);               // 1�� �Ŀ� DestroyCard �Լ��� ȣ���Ѵ�.
+
+
             cardCount -= 2;
 
             if (cardCount == 0) {
-                Victory();
+                Invoke("Victory", 0.5f);
             }
         }
-        else {
+        else 
+        {
             firstCard.ClosedCard();
             secondCard.ClosedCard();
+            firstCard = null;
+            secondCard = null;
         }
 
+
+    }
+
+
+    public void DestroyCard()
+    {
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
         firstCard = null;
         secondCard = null;
     }
+
 
     public void GameOver()
     {
@@ -87,6 +106,11 @@ public class GameManager : MonoBehaviour
             PlayerPrefs.SetInt("stageAt", nextSceneIndex);
         }
         Time.timeScale = 0f;
+        teamInfo.SetActive(true);
         nextTxt.SetActive(true);
+
+        for (int i = 0; i < deleteCard.transform.childCount; i++) 
+            Destroy(deleteCard.transform.GetChild(i).gameObject);
+
     }
 }

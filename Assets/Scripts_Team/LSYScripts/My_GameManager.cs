@@ -18,6 +18,7 @@ public class My_GameManager : MonoBehaviour
     
     public GameObject endTxt;
     public GameObject nextTxt;
+    public GameObject teamInfo;
 
     public Image targetCardImage;
 
@@ -43,6 +44,8 @@ public class My_GameManager : MonoBehaviour
         //    ������Ʈ �ҷ�����
 
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
+
+        teamInfo.SetActive(false);
     }
 
     void Start()
@@ -75,8 +78,9 @@ public class My_GameManager : MonoBehaviour
             {
                 audioSource.PlayOneShot(matchClip);
 
-                firstCard.DestroyCard();
-                secondCard.DestroyCard();
+                firstCard.anim.SetBool("isMatched", true);  // 첫번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+                secondCard.anim.SetBool("isMatched", true); // 두번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+                Invoke("DestroyCard", 1f);               // 1초 후에 DestroyCard 함수를 호출한다.
 
                 cardCount -= 2;
 
@@ -93,6 +97,8 @@ public class My_GameManager : MonoBehaviour
             {
                 firstCard.CloseCard();
                 secondCard.CloseCard();
+                firstCard = null;
+                secondCard = null;
             }
         }
         else
@@ -102,11 +108,21 @@ public class My_GameManager : MonoBehaviour
 
             firstCard.CloseCard();
             secondCard.CloseCard();
+            firstCard = null;
+            secondCard = null;
         }
 
+
+    }
+
+    public void DestroyCard()
+    {
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
         firstCard = null;
         secondCard = null;
     }
+
 
     public void GameOver()
     {
@@ -121,6 +137,7 @@ public class My_GameManager : MonoBehaviour
         }
         Time.timeScale = 0f;
         nextTxt.SetActive(true);
+        teamInfo.SetActive(true);
     }
 
 
