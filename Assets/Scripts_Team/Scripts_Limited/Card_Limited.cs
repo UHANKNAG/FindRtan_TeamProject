@@ -45,14 +45,19 @@ public class Card_Limited : MonoBehaviour
 
         if (count <= 0)
         {
-            count = 0;
-            countTxt.color = Color.red;
-            back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
 
+            Invoke("Red", 0.5f);
             Invoke("GameEnd", 1.5f);
         }
 
         countTxt.text = count.ToString();
+    }
+
+    public void Red()
+    {
+        count = 0;
+        countTxt.color = Color.red;
+        back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
     }
 
     public void GameEnd()
