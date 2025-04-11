@@ -20,6 +20,8 @@ public class NewBoard : MonoBehaviour
             GameObject go = Instantiate(card, this.transform);
 
             //    x위치와 y위치 구하기
+            float x = (i % 4) * 1.4f - 2.1f;
+            float y = (i / 4) * 1.4f - 4.0f;
             //    1.4 = 카드간의 간격, -2.1 = 위치 조정
             //    1.4 = 카드간의 간격, -4.0 = 위치 조정
             //    % 가로 행, / 세로 행
@@ -36,8 +38,6 @@ public class NewBoard : MonoBehaviour
 
             //    결론 - 만약 7을 4로 나눈다 하면은
             //    몫 = 1, 나머지 3
-            float x = (i % 4) * 1.4f - 2.1f;
-            float y = (i / 4) * 1.4f - 4.0f;
 
             //    위의 계산식에서 구해진 x, y좌표값에 생성하기
             go.transform.position = new Vector2(x, y);

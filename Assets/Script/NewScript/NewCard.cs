@@ -5,11 +5,14 @@ public class NewCard : MonoBehaviour
 {
     public int idx = 0;
 
+    //    앞뒤 게임 오브젝트
     public GameObject front;
     public GameObject back;
 
+    //    애니메이터 불러오기
     public Animator anim;
 
+    //    앞장의 이미지
     public SpriteRenderer frontImage;
 
     public Button btn;
@@ -40,6 +43,7 @@ public class NewCard : MonoBehaviour
         else btn.enabled = true;
     }
 
+    //    카드에 인덱스와 스프라이트를 지정하는 함수
     public void Setting(int num)
     {
         idx = num;
@@ -50,8 +54,7 @@ public class NewCard : MonoBehaviour
     {
         //    두번째 카드가 null이 아니라면 꺼져! 즉 버그 방지용
         if (NewGameManager.instance.secondCard != null) return;
-
-        //    만약 제한이 걸려있는 상태라면 꺼져!
+        //    만약 제한이 걸려있는 상태라면 꺼져! 이것도 버그 방지용
         if (NewGameManager.instance.isProcessing) return;
         
         //    카드 뒤집는 소리 재생하기
@@ -85,6 +88,7 @@ public class NewCard : MonoBehaviour
     public void CloseCard()
     {
         //    애니메이션 세팅 후 카드 앞뒤 뒤집기
+        //    현재 디버그(시연)을 위해 값을 뒤집음
         anim.SetBool("isOpen", false);
         front.SetActive(false);
         back.SetActive(true);
@@ -94,6 +98,7 @@ public class NewCard : MonoBehaviour
     //    이 코드는 다른곳에서 실행됨! NewBoard에서 실행됨
     public void ForceCloseImmediately()
     {
+        //    현재 디버그(시연)을 위해 값을 뒤집음
         anim.SetBool("isOpen", false);
         front.SetActive(false);
         back.SetActive(true);

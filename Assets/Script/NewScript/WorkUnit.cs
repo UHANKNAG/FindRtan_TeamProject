@@ -98,9 +98,13 @@ public class WorkUnit : MonoBehaviour
 
         //    3항 연산자 설명
         /*
-            ~가 참이라면 ? ~하기 : 아니라면
-            ~가 참이라면 ? ~하기 : 아니라면
-            이렇게 하기
+            (~가 참이라면 ? ~하기 : 
+            아니라면 ~가 참이라면 ? ~하기 : 
+            아니라면 이렇게 하기
+
+            보통은 
+            (~가 참이라면) ? (~하기) : (아니라면 ~하기)
+            이렇게 사용됨!
         */
 
         //    Vector2형 함수이기에 값을 return하여 줌
@@ -121,10 +125,13 @@ public class WorkUnit : MonoBehaviour
         yield return new WaitForSeconds(1f / atkSpeed);
 
         //    대상 레이어 string값 구하기
+        //    targetLayer는 
+        //    이 스크립트가 포함되어 있는 게임 오브젝트의 태그가 "Player"라면?
+        //    targetLayer는 "Eneym"! 아니라면 targetLayer는 "Player"!
         string targetLayer = CompareTag("Player") ? "Enemy" : "Player";
 
         //    타겟으로 잡을 레이어 마스크 설정
-        //    만약 적이였다면 플레이어로, 플레이어였다면 적으로
+        //    위에서 설정한 대로 만약 적이였다면 플레이어로, 플레이어였다면 적으로
         LayerMask targetMask = LayerMask.GetMask(targetLayer);
 
         //    범위 내 적 탐색
@@ -145,6 +152,7 @@ public class WorkUnit : MonoBehaviour
             }
         }
 
+        //    다시 걷기 상태로 바꾸기
         state = STATE.WORK;
         attackCooldown = 1f / atkSpeed;
         isAttacking = false;
@@ -156,6 +164,10 @@ public class WorkUnit : MonoBehaviour
         hp -= damage;
         //    만약 체력이 0.01보다 작다면?
         if (hp <= 0.01f)
+        //    왜 0이 아닐까?
+        //    혹시나라도 남아있을 hp를 위해서
+        //    이 게임에서는 그럴 이유는 없지만 다른 게임을 만들었을 때
+        //    죽었는 데에도 혹시
         {
             Destroy(gameObject, 0.1f);
         }
@@ -174,6 +186,7 @@ public class WorkUnit : MonoBehaviour
         {
             state = STATE.ATK;
         }
-       
+
+        //    적과 아군은 서로 부딛히지 않는데, 이는 코딩이 아닌 프로젝트 세팅에서 관리한 것
     }
 }

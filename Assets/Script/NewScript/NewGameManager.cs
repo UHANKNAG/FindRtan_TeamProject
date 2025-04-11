@@ -54,12 +54,13 @@ public class NewGameManager : MonoBehaviour
     {
         isProcessing = true;
 
-        //    소리 우선 재생
+        //    카드의 매치가 맞다면 정답 소리 우선 재생
         if (firstCard.idx == secondCard.idx) audioSource.PlayOneShot(clip);
 
         //    딜레이는 애니메이션 기다리는 시간용
         yield return new WaitForSeconds(1.2f);
         
+        //    다음 카드의 매치가 맞다면 진행될 과정들
         if (firstCard.idx == secondCard.idx)
         {
             //    게임 오브젝트 생성(Unit 프리팹을 생성시킴)
