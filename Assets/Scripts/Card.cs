@@ -64,16 +64,18 @@ public class Card : MonoBehaviour
         }
     }
 
-    public void DestroyCard() {
-        Invoke("DestroyCardInvoke",  0.5f);
+    public void DestroyCard() 
+    {
+        Invoke("DestroyCardInvoke",  1f);
     }
 
-    void DestroyCardInvoke() {
+    void DestroyCardInvoke() 
+    {
         Destroy(gameObject);
     }
 
     public void ClosedCard() {
-        Invoke("ClosedCardInvoke",  0.5f);
+        Invoke("ClosedCardInvoke",  1f);
     }
 
     void ClosedCardInvoke() {

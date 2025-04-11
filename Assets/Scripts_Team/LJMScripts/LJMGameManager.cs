@@ -75,8 +75,9 @@ public class LJMGameManager : MonoBehaviour
             audioSource.volume = 1f;
             audioSource.PlayOneShot(clip);
 
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
+            firstCard.anim.SetBool("isMatched", true);  // 첫번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+            secondCard.anim.SetBool("isMatched", true); // 두번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+            Invoke("DestroyCard", 1f);               // 1초 후에 DestroyCard 함수를 호출한다.
 
             cardCount -= 2;
 
@@ -105,13 +106,25 @@ public class LJMGameManager : MonoBehaviour
         {
             firstCard.CloseCard();
             secondCard.CloseCard();
+            firstCard = null;
+            secondCard = null;
 
             ResetCombo();
         }
 
+
+    }
+
+    public void DestroyCard()
+    {
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
         firstCard = null;
         secondCard = null;
     }
+
+
+
 
     public void GameOver()
     {

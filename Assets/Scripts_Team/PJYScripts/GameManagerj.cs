@@ -17,7 +17,7 @@ public class GameManagerj : MonoBehaviour
     public GameObject endTxt; // 게임 종료 시 표시될 텍스트(패널)
     public GameObject nextTxt;
 
-    public GameObject deleteCard = GameObject.Find("Board");
+    public GameObject deleteCard;
 
 
     public GameObject mineTxt;
@@ -47,6 +47,8 @@ public class GameManagerj : MonoBehaviour
 
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         teamInfo.SetActive(false);
+
+        deleteCard = GameObject.Find("Board");
     }
 
     void Start()
@@ -80,8 +82,9 @@ public class GameManagerj : MonoBehaviour
             audioSource.PlayOneShot(clip);
 
             // 두 카드 제거
-            firstCard.DestroyCard();
-            secondCard.DestroyCard();
+            firstCard.anim.SetBool("isMatched", true);  // 첫번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+            secondCard.anim.SetBool("isMatched", true); // 두번째 카드의 애니메이터 파라미터 isMatched를 true로 바꿔준다.
+            Invoke("DestroyCard", 1f);               // 1초 후에 DestroyCard 함수를 호출한다.
 
             // 남아 있는 전체 카드 수 감소
             cardCount -= 2;
@@ -108,9 +111,17 @@ public class GameManagerj : MonoBehaviour
             // 다시 뒷면으로
             firstCard.CloseCard();
             secondCard.CloseCard();
+            // 다음 비교를 위해 두 카드 정보 초기화
+            firstCard = null;
+            secondCard = null;
         }
 
-        // 다음 비교를 위해 두 카드 정보 초기화
+
+    }
+    public void DestroyCard()
+    {
+        firstCard.DestroyCard();
+        secondCard.DestroyCard();
         firstCard = null;
         secondCard = null;
     }

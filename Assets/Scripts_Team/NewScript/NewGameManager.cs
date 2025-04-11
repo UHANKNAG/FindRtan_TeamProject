@@ -29,8 +29,8 @@ public class NewGameManager : MonoBehaviour
     public GameObject endTxt;
     public GameObject nextTxt;
     public GameObject teamInfo;
-    public GameObject deleteCard = GameObject.Find("Board");
-    public GameObject deleteUnit = GameObject.Find("Unit");
+    public GameObject deleteCard;
+    public GameObject deleteUnit;
     public int nextSceneIndex;
 
     private void Awake()
@@ -43,6 +43,9 @@ public class NewGameManager : MonoBehaviour
 
         nextSceneIndex = SceneManager.GetActiveScene().buildIndex + 1;
         teamInfo.SetActive(false);
+
+        deleteCard = GameObject.Find("Board");
+        deleteUnit = GameObject.Find("Unit");
     }
 
     void Start()
