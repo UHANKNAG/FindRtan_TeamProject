@@ -49,7 +49,7 @@ public class Card_Limited : MonoBehaviour
             countTxt.color = Color.red;
             back.GetComponent<SpriteRenderer>().color = new Color32(100, 100, 100, 255);
 
-            Invoke("GameEnd", 1f);
+            Invoke("GameEnd", 1.5f);
         }
 
         countTxt.text = count.ToString();
