@@ -20,14 +20,14 @@ public class NewCard : MonoBehaviour
 
     void Start()
     {
-        //    ÄÄÆ÷³ÍÆ® ºÒ·¯¿À±â
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½Ò·ï¿½ï¿½ï¿½ï¿½ï¿½
         audioSource = GetComponent<AudioSource>();
         btn = GetComponentInChildren<Button>();
 
-        //    ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         btn.enabled = true;
 
-        //    µð¹ö±×¿ë ÃÊ±âÈ­ ¸ñ·Ï
+        //    ï¿½ï¿½ï¿½ï¿½×¿ï¿½ ï¿½Ê±ï¿½È­ ï¿½ï¿½ï¿½
         front.SetActive(true);
         back.SetActive(false);
     }
@@ -35,7 +35,7 @@ public class NewCard : MonoBehaviour
 
     void Update()
     {
-        //    ¸¸¾à °ÔÀÓ ¿À¹ö»óÅÂ¶ó¸é µÚÁý±â ±â´É ºñÈ°¼ºÈ­ ÇÏ±â
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ ï¿½ï¿½È°ï¿½ï¿½È­ ï¿½Ï±ï¿½
         if (NewGameManager.instance.isProcessing) btn.enabled = false;
         else btn.enabled = true;
     }
@@ -43,60 +43,60 @@ public class NewCard : MonoBehaviour
     public void Setting(int num)
     {
         idx = num;
-        frontImage.sprite = Resources.Load<Sprite>($"rtan{idx}");
+        frontImage.sprite = Resources.Load<Sprite>($"NewSprite/NewTeam{idx}");
     }
 
     public void OpenCard()
     {
-        //    µÎ¹øÂ° Ä«µå°¡ nullÀÌ ¾Æ´Ï¶ó¸é ²¨Á®! Áï ¹ö±× ¹æÁö¿ë
+        //    ï¿½Î¹ï¿½Â° Ä«ï¿½å°¡ nullï¿½ï¿½ ï¿½Æ´Ï¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½! ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         if (NewGameManager.instance.secondCard != null) return;
 
-        //    ¸¸¾à Á¦ÇÑÀÌ °É·ÁÀÖ´Â »óÅÂ¶ó¸é ²¨Á®!
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½É·ï¿½ï¿½Ö´ï¿½ ï¿½ï¿½ï¿½Â¶ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½!
         if (NewGameManager.instance.isProcessing) return;
         
-        //    Ä«µå µÚÁý´Â ¼Ò¸® Àç»ýÇÏ±â
+        //    Ä«ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½Ò¸ï¿½ ï¿½ï¿½ï¿½ï¿½Ï±ï¿½
         audioSource.PlayOneShot(clip);
 
-        //    ¾Ö´Ï¸ÞÀÌ¼Ç Á¶°Ç ¼¼ÆÃ
+        //    ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         anim.SetBool("isOpen", true);
 
-        //    Ä«µå ¾Õ µÚ µÚÁý±â
+        //    Ä«ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         front.SetActive(true);
         back.SetActive(false);
 
-        //    Ã¹¹øÂ° Ä«µå°¡ ¾ø´Ù¸é?
+        //    Ã¹ï¿½ï¿½Â° Ä«ï¿½å°¡ ï¿½ï¿½ï¿½Ù¸ï¿½?
         if (NewGameManager.instance.firstCard == null)
         {
-            //    ¸¸¾à Ã¹¹øÂ° Ä«µå°¡ ¾ø´Ù¸é Ã¹¹øÂ° Ä«µå·Î ÇÒ´çÇÏ±â
+            //    ï¿½ï¿½ï¿½ï¿½ Ã¹ï¿½ï¿½Â° Ä«ï¿½å°¡ ï¿½ï¿½ï¿½Ù¸ï¿½ Ã¹ï¿½ï¿½Â° Ä«ï¿½ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½Ï±ï¿½
             NewGameManager.instance.firstCard = this;
         }
-        //    ±× ¿ÜÀÇ »óÈ²
+        //    ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½È²
         else
         {
-            //    Ã¹¹øÂ° Ä«µå°¡ ÀÖ´Ù¸é µÎ¹øÂ° Ä«µå ÇÒ´çÇÏ±â
+            //    Ã¹ï¿½ï¿½Â° Ä«ï¿½å°¡ ï¿½Ö´Ù¸ï¿½ ï¿½Î¹ï¿½Â° Ä«ï¿½ï¿½ ï¿½Ò´ï¿½ï¿½Ï±ï¿½
             NewGameManager.instance.secondCard = this;
-            //    ¸Â¾Ò´ÂÁö ¾È¸Â¾Ò´ÂÁö È®ÀÎÇÏ´Â ÇÔ¼ö
+            //    ï¿½Â¾Ò´ï¿½ï¿½ï¿½ ï¿½È¸Â¾Ò´ï¿½ï¿½ï¿½ È®ï¿½ï¿½ï¿½Ï´ï¿½ ï¿½Ô¼ï¿½
             NewGameManager.instance.StartCoroutine(NewGameManager.instance.CheckMatchCoroutine());
         }
         
     }
 
-    //    Â¦ÀÌ ¸ÂÀÌ ¾Ê¾ÒÀ» °æ¿ì
+    //    Â¦ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½Ê¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
     public void CloseCard()
     {
-        //    ¾Ö´Ï¸ÞÀÌ¼Ç ¼¼ÆÃ ÈÄ Ä«µå ¾ÕµÚ µÚÁý±â
+        //    ï¿½Ö´Ï¸ï¿½ï¿½Ì¼ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ Ä«ï¿½ï¿½ ï¿½Õµï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½
         anim.SetBool("isOpen", false);
-        front.SetActive(false);
-        back.SetActive(true);
+        front.SetActive(true);
+        back.SetActive(false);
     }
 
-    //    Â¦ÀÌ ¸Â¾ÒÀ» °æ¿ì
-    //    ÀÌ ÄÚµå´Â ´Ù¸¥°÷¿¡¼­ ½ÇÇàµÊ! NewBoard¿¡¼­ ½ÇÇàµÊ
+    //    Â¦ï¿½ï¿½ ï¿½Â¾ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½
+    //    ï¿½ï¿½ ï¿½Úµï¿½ï¿½ ï¿½Ù¸ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½! NewBoardï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½
     public void ForceCloseImmediately()
     {
         anim.SetBool("isOpen", false);
-        front.SetActive(false);
-        back.SetActive(true);
+        front.SetActive(true);
+        back.SetActive(false);
     }
     
 

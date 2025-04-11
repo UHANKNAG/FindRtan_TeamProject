@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 706eba2fb4b41374780ede9c79a31d62, type: 3}
-  m_Name: Unit2
+  m_Name: Unit6
   m_EditorClassIdentifier: 
-  unitName: B
-  id: 2
+  unitName: G
+  id: 6
   hp: 200
   dmg: 20
   atkSpeed: 1
   range: 1.5
   speed: 1
-  sprite: {fileID: 21300000, guid: 3a1e19d3008d7fb4f90a080e6ddb7651, type: 3}
+  sprite: {fileID: 4218974394507514321, guid: 9ae7b9249234a1943bbaa86bb79bcbdb, type: 3}
   state: 0

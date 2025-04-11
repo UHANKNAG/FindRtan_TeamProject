@@ -19,5 +19,5 @@ MonoBehaviour:
   atkSpeed: 1
   range: 1.5
   speed: 1
-  sprite: {fileID: 21300000, guid: 711beafbbaa365e42ae86c37092425ba, type: 3}
+  sprite: {fileID: 676845215027168474, guid: 23cc43d00db9c3e4482e5ae5f04e3eab, type: 3}
   state: 0

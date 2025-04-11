@@ -24,7 +24,11 @@ public class EnemyBase : MonoBehaviour
 
     void Dead()
     {
-        if (data.hp <= 0) NewGameManager.instance.GameOver();
+        if (data.hp <= 0)
+        {
+            if (CompareTag("Player")) NewGameManager.instance.GameOver();
+            else if (CompareTag("Enemy")) NewGameManager.instance.Victory();
+        }
     }
 
     IEnumerator SpawnEnemyRoutine()
@@ -38,7 +42,7 @@ public class EnemyBase : MonoBehaviour
 
     void SpawnEnemy()
     {
-        //    ·£´ý°ª ¼³Á¤ ¹× ÃÊ±âÈ­
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½Ê±ï¿½È­
         int randomID = 0;
         GameUnit matchedUnit = null;
 
@@ -48,7 +52,7 @@ public class EnemyBase : MonoBehaviour
         else if (rand < 0.8f) randomID = 21;
         else randomID = 22;
 
-        //    ·£´ýÇÑ ¼ö¸¦ Ã£Àº µÚ ListÀüÃ¼¸¦ º» ÈÄ ¸Â´Â id°¡ ÀÖ´ÂÁö Å½»ö
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ Ã£ï¿½ï¿½ ï¿½ï¿½ Listï¿½ï¿½Ã¼ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ ï¿½Â´ï¿½ idï¿½ï¿½ ï¿½Ö´ï¿½ï¿½ï¿½ Å½ï¿½ï¿½
         foreach (GameUnit unit in enemyDataList)
         {
             if (unit.id == randomID)
@@ -58,19 +62,19 @@ public class EnemyBase : MonoBehaviour
             }
         }
 
-        //    ¾ÈÀüÀåÄ¡(¸¸¾à ÀÌ»óÇÑ id°ªÀ» ³Ö°Å³ª ÇØ´ç µ¥ÀÌÅÍ°¡ ¾ø´Ù¸é)
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Ä¡(ï¿½ï¿½ï¿½ï¿½ ï¿½Ì»ï¿½ï¿½ï¿½ idï¿½ï¿½ï¿½ï¿½ ï¿½Ö°Å³ï¿½ ï¿½Ø´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í°ï¿½ ï¿½ï¿½ï¿½Ù¸ï¿½)
         if (matchedUnit == null) return;
 
-        //    °ÔÀÓ ¿ÀºêÁ§Æ®¸¦ ¾À¿¡ »ý¼º(Àû ÇÁ¸®ÆÕ)
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½(ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½)
         GameObject newUnit = Instantiate(enemy, new Vector2(transform.position.x, 2), Quaternion.identity);
 
-        //    »õ·Î ¸¸µç Àû ¿ÀºêÁ§Æ®¿¡¼­ 'WorkUnit' ½ºÅ©¸³Æ®¸¦ Ã£¾Æ¼­ º¯¼ö¿¡ ÀúÀå
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ®ï¿½ï¿½ï¿½ï¿½ 'WorkUnit' ï¿½ï¿½Å©ï¿½ï¿½Æ®ï¿½ï¿½ Ã£ï¿½Æ¼ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½
         WorkUnit workUnit = newUnit.GetComponent<WorkUnit>();
 
-        //    ¸¸µç À¯´Ö¿¡ id°¡ ÀÏÄ¡ÇÏ´Â »ç¿ëÇÒ À¯´Ö µ¥ÀÌÅÍ¸¦ º¹»çÇØ¼­ ³Ö¾îÁÜ
+        //    ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½Ö¿ï¿½ idï¿½ï¿½ ï¿½ï¿½Ä¡ï¿½Ï´ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Í¸ï¿½ ï¿½ï¿½ï¿½ï¿½ï¿½Ø¼ï¿½ ï¿½Ö¾ï¿½ï¿½ï¿½
         workUnit.gameUnit = Instantiate(matchedUnit);
 
-        //    ½ºÇÁ¶óÀÌÆ® ÁöÁ¤
+        //    ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½ï¿½Æ® ï¿½ï¿½ï¿½ï¿½
         workUnit.transform.Find("UnitSprite").GetComponent<SpriteRenderer>().sprite = matchedUnit.sprite;
     }
 

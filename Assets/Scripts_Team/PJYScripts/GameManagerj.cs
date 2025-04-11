@@ -19,6 +19,7 @@ public class GameManagerj : MonoBehaviour
 
     public GameObject deleteCard = GameObject.Find("Board");
 
+
     public GameObject mineTxt;
     public Image mineCardImage; // 지뢰 카드 이미지
 
